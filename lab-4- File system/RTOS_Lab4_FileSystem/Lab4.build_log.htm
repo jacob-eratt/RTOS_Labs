@@ -1,0 +1,93 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.41.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Jacob Erattuparambil
+University of Texas at Austin
+User-based license: Keil MDK Community (non-commercial free of charge)
+Valid until: May 31 2033. Cached until: Mar 24 2025
+ 
+Tool Versions:
+Toolchain:       Keil MDK Community (non-commercial free of charge  Version: 5.41.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.22
+Assembler:       Armasm.exe V6.22
+Linker/Locator:  ArmLink.exe V6.22
+Library Manager: ArmAr.exe V6.22
+Hex Converter:   FromElf.exe V6.22
+CPU DLL:         SARMCM3.DLL V5.41.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\Users\jacob\RTOS_Labs\ValvanoWareTM4C123v6\ValvanoWareTM4C123v6\lab-4-je28497_jwv493\RTOS_Lab4_FileSystem\Lab4.uvprojx
+Project File Date:  03/17/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.22', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Lab4'
+assembling startup.s...
+compiling PLL.c...
+compiling LaunchPad.c...
+Lab4.c(369): warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  369 |   printf(errtype);
+      |          ^~~~~~~
+Lab4.c(369): note: treat the string as an argument to avoid this
+  369 |   printf(errtype);
+      |          ^
+      |          "%s", 
+1 warning generated.
+compiling Lab4.c...
+compiling Interpreter.c...
+compiling OS.c...
+compiling UART0int.c...
+assembling osasm.s...
+compiling ADCT0ATrigger.c...
+compiling ST7735.c...
+compiling eFile.c...
+compiling eDisk.c...
+compiling ADCSWTrigger.c...
+assembling cr4_fft_64_stm32.s...
+compiling ADC.c...
+compiling IRDistance.c...
+compiling WTimer0A.c...
+compiling Timer0A.c...
+compiling Timer1A.c...
+compiling LPF.c...
+compiling Timer2A.c...
+compiling Timer3A.c...
+compiling Timer4A.c...
+compiling Timer5A.c...
+linking...
+Program Size: Code=8366 RO-data=162 RW-data=12 ZI-data=24728  
+".\Lab4.axf" - 0 Error(s), 1 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.1.0.pack
+                ARM::CMSIS@6.1.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil::TM4C_DFP@1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Lab4
+  C:/Users/jacob/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+  C:/Users/jacob/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.0
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
