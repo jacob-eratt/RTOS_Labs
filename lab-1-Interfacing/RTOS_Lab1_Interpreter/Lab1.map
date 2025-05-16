@@ -1,0 +1,1865 @@
+Component: Arm Compiler for Embedded 6.22 Tool: armlink [5ee90200]
+
+==============================================================================
+
+Section Cross References
+
+    startup.o(RESET) refers to startup.o(STACK) for StackMem
+    startup.o(RESET) refers to os.o(.text.SysTick_Handler) for SysTick_Handler
+    startup.o(RESET) refers to uart0int.o(.text.UART0_Handler) for UART0_Handler
+    startup.o(RESET) refers to timer0a.o(.text.Timer0A_Handler) for Timer0A_Handler
+    startup.o(RESET) refers to os.o(.text.GPIOPortF_Handler) for GPIOPortF_Handler
+    startup.o(RESET) refers to timer4a.o(.text.Timer4A_Handler) for Timer4A_Handler
+    startup.o(RESET) refers to wtimer0a.o(.text.WideTimer0A_Handler) for WideTimer0A_Handler
+    startup.o(RESET) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    lab1.o(.text.msIterator) refers to os.o(.bss.OS_timeMs) for OS_timeMs
+    lab1.o(.ARM.exidx.text.msIterator) refers to lab1.o(.text.msIterator) for [Anonymous Symbol]
+    lab1.o(.text.DAStask) refers to adc.o(.text.ADC_In) for ADC_In
+    lab1.o(.text.DAStask) refers to lab1.o(.bss.ADCdata) for ADCdata
+    lab1.o(.text.DAStask) refers to lpf.o(.text.Median) for Median
+    lab1.o(.text.DAStask) refers to lab1.o(.bss.FilterOutput) for FilterOutput
+    lab1.o(.text.DAStask) refers to irdistance.o(.text.IRDistance_Convert) for IRDistance_Convert
+    lab1.o(.text.DAStask) refers to lab1.o(.bss.FilterWork) for FilterWork
+    lab1.o(.text.DAStask) refers to lab1.o(.bss.Distance) for Distance
+    lab1.o(.ARM.exidx.text.DAStask) refers to lab1.o(.text.DAStask) for [Anonymous Symbol]
+    lab1.o(.text.main) refers to pll.o(.text.PLL_Init) for PLL_Init
+    lab1.o(.text.main) refers to uart0int.o(.text.UART_Init) for UART_Init
+    lab1.o(.text.main) refers to st7735.o(.text.ST7735_InitR) for ST7735_InitR
+    lab1.o(.text.main) refers to launchpad.o(.text.LaunchPad_Init) for LaunchPad_Init
+    lab1.o(.text.main) refers to adc.o(.text.ADC_Init) for ADC_Init
+    lab1.o(.text.main) refers to lab1.o(.text.DAStask) for DAStask
+    lab1.o(.text.main) refers to timer4a.o(.text.Timer4A_Init) for Timer4A_Init
+    lab1.o(.text.main) refers to os.o(.text.OS_ClearMsTime) for OS_ClearMsTime
+    lab1.o(.text.main) refers to startup.o(.text) for EnableInterrupts
+    lab1.o(.text.main) refers to st7735.o(.text.ST7735_DrawFastHLine) for ST7735_DrawFastHLine
+    lab1.o(.text.main) refers to lab1.o(.text.msIterator) for msIterator
+    lab1.o(.text.main) refers to timer0a.o(.text.Timer0A_Init) for Timer0A_Init
+    lab1.o(.text.main) refers to interpreter.o(.text.Interpreter) for Interpreter
+    lab1.o(.ARM.exidx.text.main) refers to lab1.o(.text.main) for [Anonymous Symbol]
+    os.o(.text.ms_timer_increment) refers to os.o(.bss.OS_timeMs) for OS_timeMs
+    os.o(.ARM.exidx.text.ms_timer_increment) refers to os.o(.text.ms_timer_increment) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.SysTick_Handler) refers to os.o(.text.SysTick_Handler) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_LockScheduler) refers to os.o(.text.OS_LockScheduler) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_UnLockScheduler) refers to os.o(.text.OS_UnLockScheduler) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.SysTick_Init) refers to os.o(.text.SysTick_Init) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Init) refers to os.o(.text.OS_Init) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_InitSemaphore) refers to os.o(.text.OS_InitSemaphore) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Wait) refers to os.o(.text.OS_Wait) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Signal) refers to os.o(.text.OS_Signal) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_bWait) refers to os.o(.text.OS_bWait) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_bSignal) refers to os.o(.text.OS_bSignal) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_AddThread) refers to os.o(.text.OS_AddThread) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_AddProcess) refers to os.o(.text.OS_AddProcess) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Id) refers to os.o(.text.OS_Id) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_AddPeriodicThread) refers to os.o(.text.OS_AddPeriodicThread) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.GPIOPortF_Handler) refers to os.o(.text.GPIOPortF_Handler) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_AddSW1Task) refers to os.o(.text.OS_AddSW1Task) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_AddSW2Task) refers to os.o(.text.OS_AddSW2Task) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Sleep) refers to os.o(.text.OS_Sleep) for [Anonymous Symbol]
+    os.o(.text.OS_Kill) refers to startup.o(.text) for EnableInterrupts
+    os.o(.ARM.exidx.text.OS_Kill) refers to os.o(.text.OS_Kill) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Suspend) refers to os.o(.text.OS_Suspend) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Fifo_Init) refers to os.o(.text.OS_Fifo_Init) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Fifo_Put) refers to os.o(.text.OS_Fifo_Put) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Fifo_Get) refers to os.o(.text.OS_Fifo_Get) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Fifo_Size) refers to os.o(.text.OS_Fifo_Size) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_MailBox_Init) refers to os.o(.text.OS_MailBox_Init) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_MailBox_Send) refers to os.o(.text.OS_MailBox_Send) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_MailBox_Recv) refers to os.o(.text.OS_MailBox_Recv) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Time) refers to os.o(.text.OS_Time) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_TimeDifference) refers to os.o(.text.OS_TimeDifference) for [Anonymous Symbol]
+    os.o(.text.OS_ClearMsTime) refers to os.o(.bss.OS_timeMs) for OS_timeMs
+    os.o(.ARM.exidx.text.OS_ClearMsTime) refers to os.o(.text.OS_ClearMsTime) for [Anonymous Symbol]
+    os.o(.text.OS_MsTime) refers to os.o(.bss.OS_timeMs) for OS_timeMs
+    os.o(.ARM.exidx.text.OS_MsTime) refers to os.o(.text.OS_MsTime) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_Launch) refers to os.o(.text.OS_Launch) for [Anonymous Symbol]
+    os.o(.text.fputc) refers to os.o(.bss.StreamToDevice) for StreamToDevice
+    os.o(.text.fputc) refers to efile.o(.text.eFile_Write) for eFile_Write
+    os.o(.text.fputc) refers to efile.o(.text.eFile_WClose) for eFile_WClose
+    os.o(.text.fputc) refers to uart0int.o(.text.UART_OutChar) for UART_OutChar
+    os.o(.ARM.exidx.text.fputc) refers to os.o(.text.fputc) for [Anonymous Symbol]
+    os.o(.text.OS_EndRedirectToFile) refers to os.o(.bss.StreamToDevice) for StreamToDevice
+    os.o(.text.OS_EndRedirectToFile) refers to efile.o(.text.eFile_WClose) for eFile_WClose
+    os.o(.ARM.exidx.text.OS_EndRedirectToFile) refers to os.o(.text.OS_EndRedirectToFile) for [Anonymous Symbol]
+    os.o(.text.fgetc) refers to uart0int.o(.text.UART_InChar) for UART_InChar
+    os.o(.text.fgetc) refers to uart0int.o(.text.UART_OutChar) for UART_OutChar
+    os.o(.ARM.exidx.text.fgetc) refers to os.o(.text.fgetc) for [Anonymous Symbol]
+    os.o(.text.OS_RedirectToFile) refers to efile.o(.text.eFile_Create) for eFile_Create
+    os.o(.text.OS_RedirectToFile) refers to efile.o(.text.eFile_WOpen) for eFile_WOpen
+    os.o(.text.OS_RedirectToFile) refers to os.o(.bss.StreamToDevice) for StreamToDevice
+    os.o(.ARM.exidx.text.OS_RedirectToFile) refers to os.o(.text.OS_RedirectToFile) for [Anonymous Symbol]
+    os.o(.text.OS_RedirectToUART) refers to os.o(.bss.StreamToDevice) for StreamToDevice
+    os.o(.ARM.exidx.text.OS_RedirectToUART) refers to os.o(.text.OS_RedirectToUART) for [Anonymous Symbol]
+    os.o(.ARM.exidx.text.OS_RedirectToST7735) refers to os.o(.text.OS_RedirectToST7735) for [Anonymous Symbol]
+    interpreter.o(.text.writeToLCD) refers to atoi.o(.text) for atoi
+    interpreter.o(.text.writeToLCD) refers to st7735.o(.text.ST7735_Message) for ST7735_Message
+    interpreter.o(.text.writeToLCD) refers to st7735.o(.text.ST7735_DrawFastHLine) for ST7735_DrawFastHLine
+    interpreter.o(.ARM.exidx.text.writeToLCD) refers to interpreter.o(.text.writeToLCD) for [Anonymous Symbol]
+    interpreter.o(.text.printADC) refers to adc.o(.text.ADC_In) for ADC_In
+    interpreter.o(.text.printADC) refers to uart0int.o(.text.UART_OutString) for UART_OutString
+    interpreter.o(.text.printADC) refers to uart0int.o(.text.UART_OutUDec) for UART_OutUDec
+    interpreter.o(.text.printADC) refers to uart0int.o(.text.UART_OutChar) for UART_OutChar
+    interpreter.o(.ARM.exidx.text.printADC) refers to interpreter.o(.text.printADC) for [Anonymous Symbol]
+    interpreter.o(.text.getTime) refers to os.o(.text.OS_MsTime) for OS_MsTime
+    interpreter.o(.text.getTime) refers to st7735.o(.text.ST7735_MessageNum) for ST7735_MessageNum
+    interpreter.o(.ARM.exidx.text.getTime) refers to interpreter.o(.text.getTime) for [Anonymous Symbol]
+    interpreter.o(.text.help) refers to st7735.o(.text.ST7735_FillScreen) for ST7735_FillScreen
+    interpreter.o(.text.help) refers to st7735.o(.text.ST7735_DrawFastHLine) for ST7735_DrawFastHLine
+    interpreter.o(.text.help) refers to os.o(.text.OS_ClearMsTime) for OS_ClearMsTime
+    interpreter.o(.text.help) refers to os.o(.text.OS_MsTime) for OS_MsTime
+    interpreter.o(.text.help) refers to st7735.o(.text.ST7735_MessageDelay) for ST7735_MessageDelay
+    interpreter.o(.text.help) refers to interpreter.o(.data.CommandTable) for CommandTable
+    interpreter.o(.text.help) refers to st7735.o(.text.ST7735_MessageNum) for ST7735_MessageNum
+    interpreter.o(.ARM.exidx.text.help) refers to interpreter.o(.text.help) for [Anonymous Symbol]
+    interpreter.o(.text.clear) refers to st7735.o(.text.ST7735_FillScreen) for ST7735_FillScreen
+    interpreter.o(.text.clear) refers to st7735.o(.text.ST7735_DrawFastHLine) for ST7735_DrawFastHLine
+    interpreter.o(.text.clear) refers to os.o(.text.OS_ClearMsTime) for OS_ClearMsTime
+    interpreter.o(.ARM.exidx.text.clear) refers to interpreter.o(.text.clear) for [Anonymous Symbol]
+    interpreter.o(.ARM.exidx.text.Jitter) refers to interpreter.o(.text.Jitter) for [Anonymous Symbol]
+    interpreter.o(.text.isCommand) refers to interpreter.o(.data.CommandTable) for CommandTable
+    interpreter.o(.text.isCommand) refers to strcmp.o(.text) for strcmp
+    interpreter.o(.ARM.exidx.text.isCommand) refers to interpreter.o(.text.isCommand) for [Anonymous Symbol]
+    interpreter.o(.text.Interpreter) refers to os.o(.text.OS_ClearMsTime) for OS_ClearMsTime
+    interpreter.o(.text.Interpreter) refers to adc.o(.text.ADC_Init) for ADC_Init
+    interpreter.o(.text.Interpreter) refers to memseta.o(.text) for __aeabi_memclr4
+    interpreter.o(.text.Interpreter) refers to uart0int.o(.text.UART_OutString) for UART_OutString
+    interpreter.o(.text.Interpreter) refers to uart0int.o(.text.UART_OutChar) for UART_OutChar
+    interpreter.o(.text.Interpreter) refers to interpreter.o(.rodata.str1.1) for .L.str.1
+    interpreter.o(.text.Interpreter) refers to interpreter.o(.data.CommandTable) for CommandTable
+    interpreter.o(.text.Interpreter) refers to uart0int.o(.text.UART_InString) for UART_InString
+    interpreter.o(.text.Interpreter) refers to tolower.o(.text) for tolower
+    interpreter.o(.text.Interpreter) refers to strlen.o(.text) for strlen
+    interpreter.o(.text.Interpreter) refers to strtok.o(.text) for strtok
+    interpreter.o(.text.Interpreter) refers to strcmp.o(.text) for strcmp
+    interpreter.o(.text.Interpreter) refers to strcpy.o(.text) for strcpy
+    interpreter.o(.ARM.exidx.text.Interpreter) refers to interpreter.o(.text.Interpreter) for [Anonymous Symbol]
+    interpreter.o(.data.CommandTable) refers to interpreter.o(.text.writeToLCD) for writeToLCD
+    interpreter.o(.data.CommandTable) refers to interpreter.o(.text.printADC) for printADC
+    interpreter.o(.data.CommandTable) refers to interpreter.o(.text.getTime) for getTime
+    interpreter.o(.data.CommandTable) refers to interpreter.o(.text.help) for help
+    interpreter.o(.data.CommandTable) refers to interpreter.o(.text.clear) for clear
+    launchpad.o(.ARM.exidx.text.LaunchPad_Init) refers to launchpad.o(.text.LaunchPad_Init) for [Anonymous Symbol]
+    launchpad.o(.ARM.exidx.text.LaunchPad_Input) refers to launchpad.o(.text.LaunchPad_Input) for [Anonymous Symbol]
+    launchpad.o(.ARM.exidx.text.LaunchPad_WaitForTouch) refers to launchpad.o(.text.LaunchPad_WaitForTouch) for [Anonymous Symbol]
+    launchpad.o(.ARM.exidx.text.LaunchPad_WaitForRelease) refers to launchpad.o(.text.LaunchPad_WaitForRelease) for [Anonymous Symbol]
+    launchpad.o(.ARM.exidx.text.LaunchPad_Output) refers to launchpad.o(.text.LaunchPad_Output) for [Anonymous Symbol]
+    pll.o(.ARM.exidx.text.PLL_Init) refers to pll.o(.text.PLL_Init) for [Anonymous Symbol]
+    st7735.o(.ARM.exidx.text.Delay1ms) refers to st7735.o(.text.Delay1ms) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.rodata.Bcmd) for Bcmd
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.text.commonInit) for commonInit
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.data.StTextColor) for StTextColor
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.text.ST7735_InitfB) refers to st7735.o(.bss.LCDFree) for LCDFree
+    st7735.o(.text.ST7735_InitfB) refers to os.o(.text.OS_InitSemaphore) for OS_InitSemaphore
+    st7735.o(.ARM.exidx.text.ST7735_InitfB) refers to st7735.o(.text.ST7735_InitfB) for [Anonymous Symbol]
+    st7735.o(.text.commonInit) refers to st7735.o(.bss.RowStart) for RowStart
+    st7735.o(.text.commonInit) refers to st7735.o(.bss.ColStart) for ColStart
+    st7735.o(.text.commonInit) refers to edisk.o(.text.CS_Init) for CS_Init
+    st7735.o(.text.commonInit) refers to st7735.o(.text.commandList) for commandList
+    st7735.o(.ARM.exidx.text.commonInit) refers to st7735.o(.text.commonInit) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_SetCursor) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_SetCursor) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.ARM.exidx.text.ST7735_SetCursor) refers to st7735.o(.text.ST7735_SetCursor) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_FillScreen) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_FillScreen) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_FillScreen) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.ARM.exidx.text.ST7735_FillScreen) refers to st7735.o(.text.ST7735_FillScreen) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.rodata.Rcmd1) for Rcmd1
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.text.commonInit) for commonInit
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.rodata.Rcmd2green) for Rcmd2green
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.text.commandList) for commandList
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.bss.ColStart) for ColStart
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.bss.RowStart) for RowStart
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.rodata.Rcmd2red) for Rcmd2red
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.rodata.Rcmd3) for Rcmd3
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.data.StTextColor) for StTextColor
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.bss.TabColor) for TabColor
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.text.ST7735_InitR) refers to st7735.o(.bss.LCDFree) for LCDFree
+    st7735.o(.text.ST7735_InitR) refers to os.o(.text.OS_InitSemaphore) for OS_InitSemaphore
+    st7735.o(.ARM.exidx.text.ST7735_InitR) refers to st7735.o(.text.ST7735_InitR) for [Anonymous Symbol]
+    st7735.o(.ARM.exidx.text.commandList) refers to st7735.o(.text.commandList) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawPixel) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_DrawPixel) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_DrawPixel) refers to st7735.o(.text.setAddrWindow) for setAddrWindow
+    st7735.o(.ARM.exidx.text.ST7735_DrawPixel) refers to st7735.o(.text.ST7735_DrawPixel) for [Anonymous Symbol]
+    st7735.o(.text.setAddrWindow) refers to st7735.o(.bss.ColStart) for ColStart
+    st7735.o(.text.setAddrWindow) refers to st7735.o(.bss.RowStart) for RowStart
+    st7735.o(.ARM.exidx.text.setAddrWindow) refers to st7735.o(.text.setAddrWindow) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawFastVLine) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_DrawFastVLine) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_DrawFastVLine) refers to st7735.o(.text.setAddrWindow) for setAddrWindow
+    st7735.o(.ARM.exidx.text.ST7735_DrawFastVLine) refers to st7735.o(.text.ST7735_DrawFastVLine) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawFastHLine) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_DrawFastHLine) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_DrawFastHLine) refers to st7735.o(.text.setAddrWindow) for setAddrWindow
+    st7735.o(.ARM.exidx.text.ST7735_DrawFastHLine) refers to st7735.o(.text.ST7735_DrawFastHLine) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_FillRect) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_FillRect) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_FillRect) refers to st7735.o(.text.setAddrWindow) for setAddrWindow
+    st7735.o(.ARM.exidx.text.ST7735_FillRect) refers to st7735.o(.text.ST7735_FillRect) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawSmallCircle) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_DrawSmallCircle) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_DrawSmallCircle) refers to st7735.o(.rodata.smallCircle) for smallCircle
+    st7735.o(.text.ST7735_DrawSmallCircle) refers to st7735.o(.text.setAddrWindow) for setAddrWindow
+    st7735.o(.ARM.exidx.text.ST7735_DrawSmallCircle) refers to st7735.o(.text.ST7735_DrawSmallCircle) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawCircle) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_DrawCircle) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_DrawCircle) refers to st7735.o(.rodata.circle) for circle
+    st7735.o(.text.ST7735_DrawCircle) refers to st7735.o(.text.setAddrWindow) for setAddrWindow
+    st7735.o(.ARM.exidx.text.ST7735_DrawCircle) refers to st7735.o(.text.ST7735_DrawCircle) for [Anonymous Symbol]
+    st7735.o(.ARM.exidx.text.ST7735_Color565) refers to st7735.o(.text.ST7735_Color565) for [Anonymous Symbol]
+    st7735.o(.ARM.exidx.text.ST7735_SwapColor) refers to st7735.o(.text.ST7735_SwapColor) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawBitmap) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_DrawBitmap) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_DrawBitmap) refers to st7735.o(.text.setAddrWindow) for setAddrWindow
+    st7735.o(.ARM.exidx.text.ST7735_DrawBitmap) refers to st7735.o(.text.ST7735_DrawBitmap) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawCharS) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_DrawCharS) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_DrawCharS) refers to st7735.o(.rodata.Font) for Font
+    st7735.o(.text.ST7735_DrawCharS) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.text.ST7735_DrawCharS) refers to st7735.o(.text.ST7735_DrawPixel) for ST7735_DrawPixel
+    st7735.o(.ARM.exidx.text.ST7735_DrawCharS) refers to st7735.o(.text.ST7735_DrawCharS) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawChar) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_DrawChar) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_DrawChar) refers to st7735.o(.text.setAddrWindow) for setAddrWindow
+    st7735.o(.text.ST7735_DrawChar) refers to st7735.o(.rodata.Font) for Font
+    st7735.o(.ARM.exidx.text.ST7735_DrawChar) refers to st7735.o(.text.ST7735_DrawChar) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_DrawString) refers to st7735.o(.text.ST7735_DrawCharS) for ST7735_DrawCharS
+    st7735.o(.ARM.exidx.text.ST7735_DrawString) refers to st7735.o(.text.ST7735_DrawString) for [Anonymous Symbol]
+    st7735.o(.text.fillmessage) refers to st7735.o(.bss.Messageindex) for Messageindex
+    st7735.o(.text.fillmessage) refers to st7735.o(.bss.Message) for Message
+    st7735.o(.ARM.exidx.text.fillmessage) refers to st7735.o(.text.fillmessage) for [Anonymous Symbol]
+    st7735.o(.text.fillmessage4) refers to st7735.o(.bss.Message) for Message
+    st7735.o(.text.fillmessage4) refers to st7735.o(.bss.Messageindex) for Messageindex
+    st7735.o(.text.fillmessage4) refers to st7735.o(.text.fillmessage) for fillmessage
+    st7735.o(.ARM.exidx.text.fillmessage4) refers to st7735.o(.text.fillmessage4) for [Anonymous Symbol]
+    st7735.o(.text.fillmessage5) refers to st7735.o(.bss.Message) for Message
+    st7735.o(.text.fillmessage5) refers to st7735.o(.bss.Messageindex) for Messageindex
+    st7735.o(.text.fillmessage5) refers to st7735.o(.text.fillmessage) for fillmessage
+    st7735.o(.ARM.exidx.text.fillmessage5) refers to st7735.o(.text.fillmessage5) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.bss.Messageindex) for Messageindex
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.text.fillmessage) for fillmessage
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.bss.Message) for Message
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.data.StTextColor) for StTextColor
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.text.ST7735_DrawCharS) for ST7735_DrawCharS
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.rodata.Font) for Font
+    st7735.o(.text.ST7735_OutUDec) refers to st7735.o(.text.ST7735_DrawPixel) for ST7735_DrawPixel
+    st7735.o(.ARM.exidx.text.ST7735_OutUDec) refers to st7735.o(.text.ST7735_OutUDec) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_OutUDec2) refers to st7735.o(.bss.Messageindex) for Messageindex
+    st7735.o(.text.ST7735_OutUDec2) refers to st7735.o(.text.fillmessage) for fillmessage
+    st7735.o(.text.ST7735_OutUDec2) refers to st7735.o(.bss.Message) for Message
+    st7735.o(.text.ST7735_OutUDec2) refers to memseta.o(.text) for __aeabi_memset
+    st7735.o(.text.ST7735_OutUDec2) refers to st7735.o(.text.ST7735_DrawCharS) for ST7735_DrawCharS
+    st7735.o(.ARM.exidx.text.ST7735_OutUDec2) refers to st7735.o(.text.ST7735_OutUDec2) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_Message) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.text.ST7735_Message) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_Message) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_Message) refers to st7735.o(.text.ST7735_OutChar) for ST7735_OutChar
+    st7735.o(.text.ST7735_Message) refers to st7735.o(.text.ST7735_OutUDec) for ST7735_OutUDec
+    st7735.o(.ARM.exidx.text.ST7735_Message) refers to st7735.o(.text.ST7735_Message) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_OutChar) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_OutChar) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_OutChar) refers to st7735.o(.data.StTextColor) for StTextColor
+    st7735.o(.text.ST7735_OutChar) refers to st7735.o(.text.ST7735_DrawCharS) for ST7735_DrawCharS
+    st7735.o(.text.ST7735_OutChar) refers to st7735.o(.rodata.str1.1) for .L.str
+    st7735.o(.text.ST7735_OutChar) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_OutChar) refers to st7735.o(.rodata.Font) for Font
+    st7735.o(.text.ST7735_OutChar) refers to st7735.o(.text.ST7735_DrawPixel) for ST7735_DrawPixel
+    st7735.o(.ARM.exidx.text.ST7735_OutChar) refers to st7735.o(.text.ST7735_OutChar) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_MessageString) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.text.ST7735_MessageString) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_MessageString) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_MessageString) refers to st7735.o(.text.ST7735_OutChar) for ST7735_OutChar
+    st7735.o(.ARM.exidx.text.ST7735_MessageString) refers to st7735.o(.text.ST7735_MessageString) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_MessageDelay) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.text.ST7735_MessageDelay) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_MessageDelay) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_MessageDelay) refers to st7735.o(.text.ST7735_OutChar) for ST7735_OutChar
+    st7735.o(.ARM.exidx.text.ST7735_MessageDelay) refers to st7735.o(.text.ST7735_MessageDelay) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_MessageNum) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.text.ST7735_MessageNum) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_MessageNum) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_MessageNum) refers to st7735.o(.text.ST7735_OutChar) for ST7735_OutChar
+    st7735.o(.text.ST7735_MessageNum) refers to st7735.o(.text.ST7735_OutUDec) for ST7735_OutUDec
+    st7735.o(.ARM.exidx.text.ST7735_MessageNum) refers to st7735.o(.text.ST7735_MessageNum) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.bss.Messageindex) for Messageindex
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.bss.Message) for Message
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.text.fillmessage) for fillmessage
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.data.StTextColor) for StTextColor
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.text.ST7735_DrawCharS) for ST7735_DrawCharS
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.rodata.Font) for Font
+    st7735.o(.text.ST7735_OutUDec4) refers to st7735.o(.text.ST7735_DrawPixel) for ST7735_DrawPixel
+    st7735.o(.ARM.exidx.text.ST7735_OutUDec4) refers to st7735.o(.text.ST7735_OutUDec4) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.bss.Messageindex) for Messageindex
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.bss.Message) for Message
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.text.fillmessage) for fillmessage
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.bss.StY) for StY
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.bss.StX) for StX
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.data.StTextColor) for StTextColor
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.text.ST7735_DrawCharS) for ST7735_DrawCharS
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.bss._height) for _height
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.rodata.Font) for Font
+    st7735.o(.text.ST7735_OutUDec5) refers to st7735.o(.text.ST7735_DrawPixel) for ST7735_DrawPixel
+    st7735.o(.ARM.exidx.text.ST7735_OutUDec5) refers to st7735.o(.text.ST7735_OutUDec5) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_SetRotation) refers to st7735.o(.bss.TabColor) for TabColor
+    st7735.o(.text.ST7735_SetRotation) refers to st7735.o(.bss._width) for _width
+    st7735.o(.text.ST7735_SetRotation) refers to st7735.o(.bss._height) for _height
+    st7735.o(.ARM.exidx.text.ST7735_SetRotation) refers to st7735.o(.text.ST7735_SetRotation) for [Anonymous Symbol]
+    st7735.o(.ARM.exidx.text.ST7735_InvertDisplay) refers to st7735.o(.text.ST7735_InvertDisplay) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_PlotClear) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
+    st7735.o(.text.ST7735_PlotClear) refers to st7735.o(.bss.Ymax) for Ymax
+    st7735.o(.text.ST7735_PlotClear) refers to st7735.o(.bss.Ymin) for Ymin
+    st7735.o(.text.ST7735_PlotClear) refers to st7735.o(.bss.Yrange) for Yrange
+    st7735.o(.text.ST7735_PlotClear) refers to st7735.o(.bss.X) for X
+    st7735.o(.ARM.exidx.text.ST7735_PlotClear) refers to st7735.o(.text.ST7735_PlotClear) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_PlotPoint) refers to st7735.o(.bss.Ymin) for Ymin
+    st7735.o(.text.ST7735_PlotPoint) refers to st7735.o(.bss.Ymax) for Ymax
+    st7735.o(.text.ST7735_PlotPoint) refers to st7735.o(.bss.Yrange) for Yrange
+    st7735.o(.text.ST7735_PlotPoint) refers to st7735.o(.bss.X) for X
+    st7735.o(.text.ST7735_PlotPoint) refers to st7735.o(.text.ST7735_DrawPixel) for ST7735_DrawPixel
+    st7735.o(.ARM.exidx.text.ST7735_PlotPoint) refers to st7735.o(.text.ST7735_PlotPoint) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_PlotLine) refers to st7735.o(.bss.Ymin) for Ymin
+    st7735.o(.text.ST7735_PlotLine) refers to st7735.o(.bss.Ymax) for Ymax
+    st7735.o(.text.ST7735_PlotLine) refers to st7735.o(.bss.Yrange) for Yrange
+    st7735.o(.text.ST7735_PlotLine) refers to st7735.o(.bss.lastj) for lastj
+    st7735.o(.text.ST7735_PlotLine) refers to st7735.o(.bss.X) for X
+    st7735.o(.text.ST7735_PlotLine) refers to st7735.o(.text.ST7735_DrawPixel) for ST7735_DrawPixel
+    st7735.o(.ARM.exidx.text.ST7735_PlotLine) refers to st7735.o(.text.ST7735_PlotLine) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_PlotPoints) refers to st7735.o(.bss.Ymin) for Ymin
+    st7735.o(.text.ST7735_PlotPoints) refers to st7735.o(.bss.Ymax) for Ymax
+    st7735.o(.text.ST7735_PlotPoints) refers to st7735.o(.bss.Yrange) for Yrange
+    st7735.o(.text.ST7735_PlotPoints) refers to st7735.o(.bss.X) for X
+    st7735.o(.text.ST7735_PlotPoints) refers to st7735.o(.text.ST7735_DrawPixel) for ST7735_DrawPixel
+    st7735.o(.ARM.exidx.text.ST7735_PlotPoints) refers to st7735.o(.text.ST7735_PlotPoints) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_PlotBar) refers to st7735.o(.bss.Ymin) for Ymin
+    st7735.o(.text.ST7735_PlotBar) refers to st7735.o(.bss.Ymax) for Ymax
+    st7735.o(.text.ST7735_PlotBar) refers to st7735.o(.bss.Yrange) for Yrange
+    st7735.o(.text.ST7735_PlotBar) refers to st7735.o(.bss.X) for X
+    st7735.o(.text.ST7735_PlotBar) refers to st7735.o(.text.ST7735_DrawFastVLine) for ST7735_DrawFastVLine
+    st7735.o(.ARM.exidx.text.ST7735_PlotBar) refers to st7735.o(.text.ST7735_PlotBar) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_PlotdBfs) refers to st7735.o(.rodata.dBfs) for dBfs
+    st7735.o(.text.ST7735_PlotdBfs) refers to st7735.o(.bss.X) for X
+    st7735.o(.text.ST7735_PlotdBfs) refers to st7735.o(.text.ST7735_DrawFastVLine) for ST7735_DrawFastVLine
+    st7735.o(.ARM.exidx.text.ST7735_PlotdBfs) refers to st7735.o(.text.ST7735_PlotdBfs) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_PlotNext) refers to st7735.o(.bss.X) for X
+    st7735.o(.ARM.exidx.text.ST7735_PlotNext) refers to st7735.o(.text.ST7735_PlotNext) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_PlotNextErase) refers to st7735.o(.bss.X) for X
+    st7735.o(.text.ST7735_PlotNextErase) refers to st7735.o(.text.ST7735_DrawFastVLine) for ST7735_DrawFastVLine
+    st7735.o(.ARM.exidx.text.ST7735_PlotNextErase) refers to st7735.o(.text.ST7735_PlotNextErase) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_OutString) refers to st7735.o(.text.ST7735_OutChar) for ST7735_OutChar
+    st7735.o(.ARM.exidx.text.ST7735_OutString) refers to st7735.o(.text.ST7735_OutString) for [Anonymous Symbol]
+    st7735.o(.text.ST7735_SetTextColor) refers to st7735.o(.data.StTextColor) for StTextColor
+    st7735.o(.ARM.exidx.text.ST7735_SetTextColor) refers to st7735.o(.text.ST7735_SetTextColor) for [Anonymous Symbol]
+    uart0int.o(.text.RxFifo_Init) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.RxFifo_Init) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.ARM.exidx.text.RxFifo_Init) refers to uart0int.o(.text.RxFifo_Init) for [Anonymous Symbol]
+    uart0int.o(.text.RxFifo_Put) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.RxFifo_Put) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.RxFifo_Put) refers to uart0int.o(.bss.RxFifo) for RxFifo
+    uart0int.o(.ARM.exidx.text.RxFifo_Put) refers to uart0int.o(.text.RxFifo_Put) for [Anonymous Symbol]
+    uart0int.o(.text.RxFifo_Get) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.RxFifo_Get) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.RxFifo_Get) refers to uart0int.o(.bss.RxFifo) for RxFifo
+    uart0int.o(.ARM.exidx.text.RxFifo_Get) refers to uart0int.o(.text.RxFifo_Get) for [Anonymous Symbol]
+    uart0int.o(.text.RxFifo_Size) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.RxFifo_Size) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.ARM.exidx.text.RxFifo_Size) refers to uart0int.o(.text.RxFifo_Size) for [Anonymous Symbol]
+    uart0int.o(.text.TxFifo_Init) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.TxFifo_Init) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.ARM.exidx.text.TxFifo_Init) refers to uart0int.o(.text.TxFifo_Init) for [Anonymous Symbol]
+    uart0int.o(.text.TxFifo_Put) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.TxFifo_Put) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.TxFifo_Put) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.TxFifo_Put) refers to uart0int.o(.text.TxFifo_Put) for [Anonymous Symbol]
+    uart0int.o(.text.TxFifo_Get) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.TxFifo_Get) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.TxFifo_Get) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.TxFifo_Get) refers to uart0int.o(.text.TxFifo_Get) for [Anonymous Symbol]
+    uart0int.o(.text.TxFifo_Size) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.TxFifo_Size) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.ARM.exidx.text.TxFifo_Size) refers to uart0int.o(.text.TxFifo_Size) for [Anonymous Symbol]
+    uart0int.o(.text.UART_Init) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.UART_Init) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.UART_Init) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_Init) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.ARM.exidx.text.UART_Init) refers to uart0int.o(.text.UART_Init) for [Anonymous Symbol]
+    uart0int.o(.text.UART_InChar) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.UART_InChar) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.UART_InChar) refers to uart0int.o(.bss.RxFifo) for RxFifo
+    uart0int.o(.ARM.exidx.text.UART_InChar) refers to uart0int.o(.text.UART_InChar) for [Anonymous Symbol]
+    uart0int.o(.text.UART_InCharNonBlock) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.UART_InCharNonBlock) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.UART_InCharNonBlock) refers to uart0int.o(.bss.RxFifo) for RxFifo
+    uart0int.o(.ARM.exidx.text.UART_InCharNonBlock) refers to uart0int.o(.text.UART_InCharNonBlock) for [Anonymous Symbol]
+    uart0int.o(.text.UART_OutChar) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_OutChar) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_OutChar) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_OutChar) refers to uart0int.o(.text.UART_OutChar) for [Anonymous Symbol]
+    uart0int.o(.text.UART_OutCharNonBlock) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_OutCharNonBlock) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_OutCharNonBlock) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_OutCharNonBlock) refers to uart0int.o(.text.UART_OutCharNonBlock) for [Anonymous Symbol]
+    uart0int.o(.text.UART0_Handler) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART0_Handler) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART0_Handler) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.text.UART0_Handler) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.UART0_Handler) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.UART0_Handler) refers to uart0int.o(.bss.RxFifo) for RxFifo
+    uart0int.o(.ARM.exidx.text.UART0_Handler) refers to uart0int.o(.text.UART0_Handler) for [Anonymous Symbol]
+    uart0int.o(.text.UART_OutString) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_OutString) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_OutString) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_OutString) refers to uart0int.o(.text.UART_OutString) for [Anonymous Symbol]
+    uart0int.o(.text.UART_InUDec) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.UART_InUDec) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.UART_InUDec) refers to uart0int.o(.bss.RxFifo) for RxFifo
+    uart0int.o(.text.UART_InUDec) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_InUDec) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_InUDec) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_InUDec) refers to uart0int.o(.text.UART_InUDec) for [Anonymous Symbol]
+    uart0int.o(.text.UART_OutUDec) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_OutUDec) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_OutUDec) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_OutUDec) refers to uart0int.o(.text.UART_OutUDec) for [Anonymous Symbol]
+    uart0int.o(.text.UART_OutSDec) refers to uart0int.o(.text.UART_OutUDec) for UART_OutUDec
+    uart0int.o(.text.UART_OutSDec) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_OutSDec) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_OutSDec) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_OutSDec) refers to uart0int.o(.text.UART_OutSDec) for [Anonymous Symbol]
+    uart0int.o(.text.UART_InUHex) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.UART_InUHex) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.UART_InUHex) refers to uart0int.o(.bss.RxFifo) for RxFifo
+    uart0int.o(.text.UART_InUHex) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_InUHex) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_InUHex) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_InUHex) refers to uart0int.o(.text.UART_InUHex) for [Anonymous Symbol]
+    uart0int.o(.text.UART_OutUHex) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_OutUHex) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_OutUHex) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_OutUHex) refers to uart0int.o(.text.UART_OutUHex) for [Anonymous Symbol]
+    uart0int.o(.ARM.exidx.text.Fixed_Fix2Str) refers to uart0int.o(.text.Fixed_Fix2Str) for [Anonymous Symbol]
+    uart0int.o(.text.UART_Fix2) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_Fix2) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_Fix2) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_Fix2) refers to uart0int.o(.text.UART_Fix2) for [Anonymous Symbol]
+    uart0int.o(.text.UART_InString) refers to uart0int.o(.bss.RxPutI) for RxPutI
+    uart0int.o(.text.UART_InString) refers to uart0int.o(.bss.RxGetI) for RxGetI
+    uart0int.o(.text.UART_InString) refers to uart0int.o(.bss.RxFifo) for RxFifo
+    uart0int.o(.text.UART_InString) refers to uart0int.o(.bss.TxPutI) for TxPutI
+    uart0int.o(.text.UART_InString) refers to uart0int.o(.bss.TxGetI) for TxGetI
+    uart0int.o(.text.UART_InString) refers to uart0int.o(.bss.TxFifo) for TxFifo
+    uart0int.o(.ARM.exidx.text.UART_InString) refers to uart0int.o(.text.UART_InString) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq3_Ch9) refers to adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3_Ch9) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq3_Ch7) refers to adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3_Ch7) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq3) refers to adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC0_InSeq3) refers to adcswtrigger.o(.text.ADC0_InSeq3) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC_Init89) refers to adcswtrigger.o(.text.ADC_Init89) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC_In89) refers to adcswtrigger.o(.text.ADC_In89) for [Anonymous Symbol]
+    adcswtrigger.o(.text.ADC0_InitSWTriggerSeq2) refers to adcswtrigger.o(.bss.UserTask2) for UserTask2
+    adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq2) refers to adcswtrigger.o(.text.ADC0_InitSWTriggerSeq2) for [Anonymous Symbol]
+    adcswtrigger.o(.text.ADC0_InSeq2) refers to adcswtrigger.o(.bss.UserTask2) for UserTask2
+    adcswtrigger.o(.ARM.exidx.text.ADC0_InSeq2) refers to adcswtrigger.o(.text.ADC0_InSeq2) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq3_InternalTemperature) refers to adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3_InternalTemperature) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC0_InSeq3_InternalTemperature) refers to adcswtrigger.o(.text.ADC0_InSeq3_InternalTemperature) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC_Init3210) refers to adcswtrigger.o(.text.ADC_Init3210) for [Anonymous Symbol]
+    adcswtrigger.o(.ARM.exidx.text.ADC_In3210) refers to adcswtrigger.o(.text.ADC_In3210) for [Anonymous Symbol]
+    lpf.o(.ARM.exidx.text.sqrt2) refers to lpf.o(.text.sqrt2) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Init) refers to lpf.o(.bss.Size1) for Size1
+    lpf.o(.text.LPF_Init) refers to lpf.o(.bss.I1) for I1
+    lpf.o(.text.LPF_Init) refers to lpf.o(.bss.LPFSum1) for LPFSum1
+    lpf.o(.text.LPF_Init) refers to lpf.o(.bss.x1) for x1
+    lpf.o(.ARM.exidx.text.LPF_Init) refers to lpf.o(.text.LPF_Init) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Calc) refers to lpf.o(.bss.I1) for I1
+    lpf.o(.text.LPF_Calc) refers to lpf.o(.bss.Size1) for Size1
+    lpf.o(.text.LPF_Calc) refers to lpf.o(.bss.LPFSum1) for LPFSum1
+    lpf.o(.text.LPF_Calc) refers to lpf.o(.bss.x1) for x1
+    lpf.o(.ARM.exidx.text.LPF_Calc) refers to lpf.o(.text.LPF_Calc) for [Anonymous Symbol]
+    lpf.o(.text.Noise) refers to lpf.o(.bss.Size1) for Size1
+    lpf.o(.text.Noise) refers to lpf.o(.bss.x1) for x1
+    lpf.o(.text.Noise) refers to lpf.o(.bss.sigma1) for sigma1
+    lpf.o(.text.Noise) refers to lpf.o(.bss.snr1) for snr1
+    lpf.o(.ARM.exidx.text.Noise) refers to lpf.o(.text.Noise) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Init2) refers to lpf.o(.bss.Size2) for Size2
+    lpf.o(.text.LPF_Init2) refers to lpf.o(.bss.I2) for I2
+    lpf.o(.text.LPF_Init2) refers to lpf.o(.bss.LPFSum2) for LPFSum2
+    lpf.o(.text.LPF_Init2) refers to lpf.o(.bss.x2) for x2
+    lpf.o(.ARM.exidx.text.LPF_Init2) refers to lpf.o(.text.LPF_Init2) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Calc2) refers to lpf.o(.bss.I2) for I2
+    lpf.o(.text.LPF_Calc2) refers to lpf.o(.bss.Size2) for Size2
+    lpf.o(.text.LPF_Calc2) refers to lpf.o(.bss.LPFSum2) for LPFSum2
+    lpf.o(.text.LPF_Calc2) refers to lpf.o(.bss.x2) for x2
+    lpf.o(.ARM.exidx.text.LPF_Calc2) refers to lpf.o(.text.LPF_Calc2) for [Anonymous Symbol]
+    lpf.o(.text.Noise2) refers to lpf.o(.bss.Size2) for Size2
+    lpf.o(.text.Noise2) refers to lpf.o(.bss.x2) for x2
+    lpf.o(.text.Noise2) refers to lpf.o(.bss.sigma2) for sigma2
+    lpf.o(.text.Noise2) refers to lpf.o(.bss.snr2) for snr2
+    lpf.o(.ARM.exidx.text.Noise2) refers to lpf.o(.text.Noise2) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Init3) refers to lpf.o(.bss.Size3) for Size3
+    lpf.o(.text.LPF_Init3) refers to lpf.o(.bss.I3) for I3
+    lpf.o(.text.LPF_Init3) refers to lpf.o(.bss.LPFSum3) for LPFSum3
+    lpf.o(.text.LPF_Init3) refers to lpf.o(.bss.x3) for x3
+    lpf.o(.ARM.exidx.text.LPF_Init3) refers to lpf.o(.text.LPF_Init3) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Calc3) refers to lpf.o(.bss.I3) for I3
+    lpf.o(.text.LPF_Calc3) refers to lpf.o(.bss.Size3) for Size3
+    lpf.o(.text.LPF_Calc3) refers to lpf.o(.bss.LPFSum3) for LPFSum3
+    lpf.o(.text.LPF_Calc3) refers to lpf.o(.bss.x3) for x3
+    lpf.o(.ARM.exidx.text.LPF_Calc3) refers to lpf.o(.text.LPF_Calc3) for [Anonymous Symbol]
+    lpf.o(.text.Noise3) refers to lpf.o(.bss.Size3) for Size3
+    lpf.o(.text.Noise3) refers to lpf.o(.bss.x3) for x3
+    lpf.o(.text.Noise3) refers to lpf.o(.bss.sigma3) for sigma3
+    lpf.o(.text.Noise3) refers to lpf.o(.bss.snr3) for snr3
+    lpf.o(.ARM.exidx.text.Noise3) refers to lpf.o(.text.Noise3) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Init4) refers to lpf.o(.bss.Size4) for Size4
+    lpf.o(.text.LPF_Init4) refers to lpf.o(.bss.I4) for I4
+    lpf.o(.text.LPF_Init4) refers to lpf.o(.bss.LPFSum4) for LPFSum4
+    lpf.o(.text.LPF_Init4) refers to lpf.o(.bss.x4) for x4
+    lpf.o(.ARM.exidx.text.LPF_Init4) refers to lpf.o(.text.LPF_Init4) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Calc4) refers to lpf.o(.bss.I4) for I4
+    lpf.o(.text.LPF_Calc4) refers to lpf.o(.bss.Size4) for Size4
+    lpf.o(.text.LPF_Calc4) refers to lpf.o(.bss.LPFSum4) for LPFSum4
+    lpf.o(.text.LPF_Calc4) refers to lpf.o(.bss.x4) for x4
+    lpf.o(.ARM.exidx.text.LPF_Calc4) refers to lpf.o(.text.LPF_Calc4) for [Anonymous Symbol]
+    lpf.o(.text.Noise4) refers to lpf.o(.bss.Size4) for Size4
+    lpf.o(.text.Noise4) refers to lpf.o(.bss.x4) for x4
+    lpf.o(.text.Noise4) refers to lpf.o(.bss.sigma4) for sigma4
+    lpf.o(.text.Noise4) refers to lpf.o(.bss.snr4) for snr4
+    lpf.o(.ARM.exidx.text.Noise4) refers to lpf.o(.text.Noise4) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Init5) refers to lpf.o(.bss.Size5) for Size5
+    lpf.o(.text.LPF_Init5) refers to lpf.o(.bss.I5) for I5
+    lpf.o(.text.LPF_Init5) refers to lpf.o(.bss.LPFSum5) for LPFSum5
+    lpf.o(.text.LPF_Init5) refers to lpf.o(.bss.x5) for x5
+    lpf.o(.ARM.exidx.text.LPF_Init5) refers to lpf.o(.text.LPF_Init5) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Calc5) refers to lpf.o(.bss.I5) for I5
+    lpf.o(.text.LPF_Calc5) refers to lpf.o(.bss.Size5) for Size5
+    lpf.o(.text.LPF_Calc5) refers to lpf.o(.bss.LPFSum5) for LPFSum5
+    lpf.o(.text.LPF_Calc5) refers to lpf.o(.bss.x5) for x5
+    lpf.o(.ARM.exidx.text.LPF_Calc5) refers to lpf.o(.text.LPF_Calc5) for [Anonymous Symbol]
+    lpf.o(.text.Noise5) refers to lpf.o(.bss.Size5) for Size5
+    lpf.o(.text.Noise5) refers to lpf.o(.bss.x5) for x5
+    lpf.o(.text.Noise5) refers to lpf.o(.bss.sigma5) for sigma5
+    lpf.o(.text.Noise5) refers to lpf.o(.bss.snr5) for snr5
+    lpf.o(.ARM.exidx.text.Noise5) refers to lpf.o(.text.Noise5) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Init6) refers to lpf.o(.bss.Size6) for Size6
+    lpf.o(.text.LPF_Init6) refers to lpf.o(.bss.I6) for I6
+    lpf.o(.text.LPF_Init6) refers to lpf.o(.bss.LPFSum6) for LPFSum6
+    lpf.o(.text.LPF_Init6) refers to lpf.o(.bss.x6) for x6
+    lpf.o(.ARM.exidx.text.LPF_Init6) refers to lpf.o(.text.LPF_Init6) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Calc6) refers to lpf.o(.bss.I6) for I6
+    lpf.o(.text.LPF_Calc6) refers to lpf.o(.bss.Size6) for Size6
+    lpf.o(.text.LPF_Calc6) refers to lpf.o(.bss.LPFSum6) for LPFSum6
+    lpf.o(.text.LPF_Calc6) refers to lpf.o(.bss.x6) for x6
+    lpf.o(.ARM.exidx.text.LPF_Calc6) refers to lpf.o(.text.LPF_Calc6) for [Anonymous Symbol]
+    lpf.o(.text.Noise6) refers to lpf.o(.bss.Size6) for Size6
+    lpf.o(.text.Noise6) refers to lpf.o(.bss.x6) for x6
+    lpf.o(.text.Noise6) refers to lpf.o(.bss.sigma6) for sigma6
+    lpf.o(.text.Noise6) refers to lpf.o(.bss.snr6) for snr6
+    lpf.o(.ARM.exidx.text.Noise6) refers to lpf.o(.text.Noise6) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Init7) refers to lpf.o(.bss.Size7) for Size7
+    lpf.o(.text.LPF_Init7) refers to lpf.o(.bss.I7) for I7
+    lpf.o(.text.LPF_Init7) refers to lpf.o(.bss.LPFSum7) for LPFSum7
+    lpf.o(.text.LPF_Init7) refers to lpf.o(.bss.x7) for x7
+    lpf.o(.ARM.exidx.text.LPF_Init7) refers to lpf.o(.text.LPF_Init7) for [Anonymous Symbol]
+    lpf.o(.text.LPF_Calc7) refers to lpf.o(.bss.I7) for I7
+    lpf.o(.text.LPF_Calc7) refers to lpf.o(.bss.Size7) for Size7
+    lpf.o(.text.LPF_Calc7) refers to lpf.o(.bss.LPFSum7) for LPFSum7
+    lpf.o(.text.LPF_Calc7) refers to lpf.o(.bss.x7) for x7
+    lpf.o(.ARM.exidx.text.LPF_Calc7) refers to lpf.o(.text.LPF_Calc7) for [Anonymous Symbol]
+    lpf.o(.text.Noise7) refers to lpf.o(.bss.Size7) for Size7
+    lpf.o(.text.Noise7) refers to lpf.o(.bss.x7) for x7
+    lpf.o(.text.Noise7) refers to lpf.o(.bss.sigma7) for sigma7
+    lpf.o(.text.Noise7) refers to lpf.o(.bss.snr7) for snr7
+    lpf.o(.ARM.exidx.text.Noise7) refers to lpf.o(.text.Noise7) for [Anonymous Symbol]
+    lpf.o(.text.Median) refers to lpf.o(.bss.u1) for u1
+    lpf.o(.text.Median) refers to lpf.o(.bss.u2) for u2
+    lpf.o(.text.Median) refers to lpf.o(.bss.u3) for u3
+    lpf.o(.ARM.exidx.text.Median) refers to lpf.o(.text.Median) for [Anonymous Symbol]
+    lpf.o(.text.Filter) refers to lpf.o(.data.Filter.n) for Filter.n
+    lpf.o(.text.Filter) refers to lpf.o(.bss.Filter.x) for Filter.x
+    lpf.o(.text.Filter) refers to lpf.o(.bss.Filter.y) for Filter.y
+    lpf.o(.ARM.exidx.text.Filter) refers to lpf.o(.text.Filter) for [Anonymous Symbol]
+    irdistance.o(.text.IRDistance_Convert) refers to irdistance.o(.rodata.IRmax) for IRmax
+    irdistance.o(.text.IRDistance_Convert) refers to irdistance.o(.rodata.B) for B
+    irdistance.o(.text.IRDistance_Convert) refers to irdistance.o(.rodata.A) for A
+    irdistance.o(.ARM.exidx.text.IRDistance_Convert) refers to irdistance.o(.text.IRDistance_Convert) for [Anonymous Symbol]
+    timer4a.o(.text.Timer4A_Init) refers to timer4a.o(.bss.PeriodicTask4) for PeriodicTask4
+    timer4a.o(.ARM.exidx.text.Timer4A_Init) refers to timer4a.o(.text.Timer4A_Init) for [Anonymous Symbol]
+    timer4a.o(.text.Timer4A_Handler) refers to timer4a.o(.bss.PeriodicTask4) for PeriodicTask4
+    timer4a.o(.ARM.exidx.text.Timer4A_Handler) refers to timer4a.o(.text.Timer4A_Handler) for [Anonymous Symbol]
+    timer4a.o(.ARM.exidx.text.Timer4A_Stop) refers to timer4a.o(.text.Timer4A_Stop) for [Anonymous Symbol]
+    wtimer0a.o(.text.WideTimer0A_Init) refers to wtimer0a.o(.bss.WidePeriodicTask0) for WidePeriodicTask0
+    wtimer0a.o(.ARM.exidx.text.WideTimer0A_Init) refers to wtimer0a.o(.text.WideTimer0A_Init) for [Anonymous Symbol]
+    wtimer0a.o(.text.WideTimer0A_Handler) refers to wtimer0a.o(.bss.WidePeriodicTask0) for WidePeriodicTask0
+    wtimer0a.o(.ARM.exidx.text.WideTimer0A_Handler) refers to wtimer0a.o(.text.WideTimer0A_Handler) for [Anonymous Symbol]
+    wtimer0a.o(.ARM.exidx.text.WideTimer0_Stop) refers to wtimer0a.o(.text.WideTimer0_Stop) for [Anonymous Symbol]
+    edisk.o(.ARM.exidx.text.CS_Init) refers to edisk.o(.text.CS_Init) for [Anonymous Symbol]
+    edisk.o(.ARM.exidx.text.SSI0_Init) refers to edisk.o(.text.SSI0_Init) for [Anonymous Symbol]
+    edisk.o(.text.eDisk_Init) refers to edisk.o(.text.SSI0_Init) for SSI0_Init
+    edisk.o(.text.eDisk_Init) refers to edisk.o(.bss.Timer1) for Timer1
+    edisk.o(.text.eDisk_Init) refers to edisk.o(.data.Stat) for Stat
+    edisk.o(.text.eDisk_Init) refers to edisk.o(.text.send_cmd) for send_cmd
+    edisk.o(.text.eDisk_Init) refers to edisk.o(.bss.CardType) for CardType
+    edisk.o(.ARM.exidx.text.eDisk_Init) refers to edisk.o(.text.eDisk_Init) for [Anonymous Symbol]
+    edisk.o(.text.send_cmd) refers to edisk.o(.bss.Timer2) for Timer2
+    edisk.o(.ARM.exidx.text.send_cmd) refers to edisk.o(.text.send_cmd) for [Anonymous Symbol]
+    edisk.o(.text.eDisk_Status) refers to edisk.o(.data.Stat) for Stat
+    edisk.o(.ARM.exidx.text.eDisk_Status) refers to edisk.o(.text.eDisk_Status) for [Anonymous Symbol]
+    edisk.o(.text.eDisk_Read) refers to edisk.o(.data.Stat) for Stat
+    edisk.o(.text.eDisk_Read) refers to edisk.o(.bss.CardType) for CardType
+    edisk.o(.text.eDisk_Read) refers to edisk.o(.text.send_cmd) for send_cmd
+    edisk.o(.text.eDisk_Read) refers to edisk.o(.text.rcvr_datablock) for rcvr_datablock
+    edisk.o(.ARM.exidx.text.eDisk_Read) refers to edisk.o(.text.eDisk_Read) for [Anonymous Symbol]
+    edisk.o(.text.rcvr_datablock) refers to edisk.o(.bss.Timer1) for Timer1
+    edisk.o(.ARM.exidx.text.rcvr_datablock) refers to edisk.o(.text.rcvr_datablock) for [Anonymous Symbol]
+    edisk.o(.text.eDisk_ReadBlock) refers to edisk.o(.data.Stat) for Stat
+    edisk.o(.text.eDisk_ReadBlock) refers to edisk.o(.bss.CardType) for CardType
+    edisk.o(.text.eDisk_ReadBlock) refers to edisk.o(.text.send_cmd) for send_cmd
+    edisk.o(.text.eDisk_ReadBlock) refers to edisk.o(.text.rcvr_datablock) for rcvr_datablock
+    edisk.o(.ARM.exidx.text.eDisk_ReadBlock) refers to edisk.o(.text.eDisk_ReadBlock) for [Anonymous Symbol]
+    edisk.o(.text.eDisk_Write) refers to edisk.o(.data.Stat) for Stat
+    edisk.o(.text.eDisk_Write) refers to edisk.o(.bss.CardType) for CardType
+    edisk.o(.text.eDisk_Write) refers to edisk.o(.text.send_cmd) for send_cmd
+    edisk.o(.text.eDisk_Write) refers to edisk.o(.text.xmit_datablock) for xmit_datablock
+    edisk.o(.text.eDisk_Write) refers to edisk.o(.bss.Timer2) for Timer2
+    edisk.o(.ARM.exidx.text.eDisk_Write) refers to edisk.o(.text.eDisk_Write) for [Anonymous Symbol]
+    edisk.o(.text.xmit_datablock) refers to edisk.o(.bss.Timer2) for Timer2
+    edisk.o(.ARM.exidx.text.xmit_datablock) refers to edisk.o(.text.xmit_datablock) for [Anonymous Symbol]
+    edisk.o(.text.eDisk_WriteBlock) refers to edisk.o(.data.Stat) for Stat
+    edisk.o(.text.eDisk_WriteBlock) refers to edisk.o(.bss.CardType) for CardType
+    edisk.o(.text.eDisk_WriteBlock) refers to edisk.o(.text.send_cmd) for send_cmd
+    edisk.o(.text.eDisk_WriteBlock) refers to edisk.o(.text.xmit_datablock) for xmit_datablock
+    edisk.o(.ARM.exidx.text.eDisk_WriteBlock) refers to edisk.o(.text.eDisk_WriteBlock) for [Anonymous Symbol]
+    edisk.o(.text.disk_ioctl) refers to edisk.o(.data.Stat) for Stat
+    edisk.o(.text.disk_ioctl) refers to edisk.o(.bss.Timer2) for Timer2
+    edisk.o(.text.disk_ioctl) refers to edisk.o(.bss.CardType) for CardType
+    edisk.o(.text.disk_ioctl) refers to edisk.o(.text.send_cmd) for send_cmd
+    edisk.o(.text.disk_ioctl) refers to edisk.o(.text.rcvr_datablock) for rcvr_datablock
+    edisk.o(.ARM.exidx.text.disk_ioctl) refers to edisk.o(.text.disk_ioctl) for [Anonymous Symbol]
+    edisk.o(.text.disk_timerproc) refers to edisk.o(.bss.Timer1) for Timer1
+    edisk.o(.text.disk_timerproc) refers to edisk.o(.bss.Timer2) for Timer2
+    edisk.o(.text.disk_timerproc) refers to edisk.o(.data.Stat) for Stat
+    edisk.o(.ARM.exidx.text.disk_timerproc) refers to edisk.o(.text.disk_timerproc) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_Init) refers to efile.o(.text.eFile_Init) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_Format) refers to efile.o(.text.eFile_Format) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_Mount) refers to efile.o(.text.eFile_Mount) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_Create) refers to efile.o(.text.eFile_Create) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_WOpen) refers to efile.o(.text.eFile_WOpen) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_Write) refers to efile.o(.text.eFile_Write) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_WClose) refers to efile.o(.text.eFile_WClose) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_ROpen) refers to efile.o(.text.eFile_ROpen) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_ReadNext) refers to efile.o(.text.eFile_ReadNext) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_RClose) refers to efile.o(.text.eFile_RClose) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_Delete) refers to efile.o(.text.eFile_Delete) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_DOpen) refers to efile.o(.text.eFile_DOpen) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_DirNext) refers to efile.o(.text.eFile_DirNext) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_DClose) refers to efile.o(.text.eFile_DClose) for [Anonymous Symbol]
+    efile.o(.ARM.exidx.text.eFile_Unmount) refers to efile.o(.text.eFile_Unmount) for [Anonymous Symbol]
+    adc.o(.text.ADC_Init) refers to adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3) for ADC0_InitSWTriggerSeq3
+    adc.o(.ARM.exidx.text.ADC_Init) refers to adc.o(.text.ADC_Init) for [Anonymous Symbol]
+    adc.o(.text.ADC_In) refers to adcswtrigger.o(.text.ADC0_InSeq3) for ADC0_InSeq3
+    adc.o(.ARM.exidx.text.ADC_In) refers to adc.o(.text.ADC_In) for [Anonymous Symbol]
+    timer0a.o(.text.Timer0A_Init) refers to timer0a.o(.bss.PeriodicTask0) for PeriodicTask0
+    timer0a.o(.ARM.exidx.text.Timer0A_Init) refers to timer0a.o(.text.Timer0A_Init) for [Anonymous Symbol]
+    timer0a.o(.text.Timer0A_Handler) refers to timer0a.o(.bss.PeriodicTask0) for PeriodicTask0
+    timer0a.o(.ARM.exidx.text.Timer0A_Handler) refers to timer0a.o(.text.Timer0A_Handler) for [Anonymous Symbol]
+    timer0a.o(.ARM.exidx.text.Timer0A_Stop) refers to timer0a.o(.text.Timer0A_Stop) for [Anonymous Symbol]
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8b.o(.ARM.Collect$$$$0000000A) for _main_cpp_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    strtok.o(.text) refers to strtok.o(.data) for .data
+    strtok_r.o(.text) refers to strtok_r.o(.data) for .data
+    atoi.o(.text) refers to errno.o(i.__aeabi_errno_addr) for __aeabi_errno_addr
+    atoi.o(.text) refers to strtol.o(.text) for strtol
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to lab1.o(.text.main) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to lab1.o(.text.main) for main
+    errno.o(i.__aeabi_errno_addr) refers to errno.o(.data) for .data
+    errno.o(i.__read_errno) refers to errno.o(.data) for .data
+    errno.o(i.__set_errno) refers to errno.o(.data) for .data
+    strtol.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    strtol.o(.text) refers to _strtoul.o(.text) for _strtoul
+    strtol.o(.text) refers to errno.o(i.__aeabi_errno_addr) for __aeabi_errno_addr
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+    ctype_o.o(.text) refers to ctype_o.o(.constdata) for .constdata
+    ctype_o.o(.constdata) refers to ctype_o.o(.constdata) for __ctype_table
+    isalnum_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    isalpha_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    isblank_o.o(.text) refers to ctype_o.o(.constdata) for __ctype_table
+    iscntrl_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    isdigit_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    isgraph_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    islower_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    isprint_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    ispunct_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    isspace_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    isupper_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    isxdigit_o.o(.text) refers to ctype_o.o(.text) for __rt_ctype_table
+    _strtoul.o(.text) refers to _chval.o(.text) for _chval
+    _strtoul.o(.text) refers to errno.o(i.__aeabi_errno_addr) for __aeabi_errno_addr
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing startup.o(HEAP), (0 bytes).
+    Removing lab1.o(.text), (0 bytes).
+    Removing lab1.o(.ARM.exidx.text.msIterator), (8 bytes).
+    Removing lab1.o(.ARM.exidx.text.DAStask), (8 bytes).
+    Removing lab1.o(.ARM.exidx.text.main), (8 bytes).
+    Removing lab1.o(.ARM.use_no_argv), (4 bytes).
+    Removing os.o(.text), (0 bytes).
+    Removing os.o(.text.ms_timer_increment), (16 bytes).
+    Removing os.o(.ARM.exidx.text.ms_timer_increment), (8 bytes).
+    Removing os.o(.ARM.exidx.text.SysTick_Handler), (8 bytes).
+    Removing os.o(.text.OS_LockScheduler), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_LockScheduler), (8 bytes).
+    Removing os.o(.text.OS_UnLockScheduler), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_UnLockScheduler), (8 bytes).
+    Removing os.o(.text.SysTick_Init), (2 bytes).
+    Removing os.o(.ARM.exidx.text.SysTick_Init), (8 bytes).
+    Removing os.o(.text.OS_Init), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Init), (8 bytes).
+    Removing os.o(.ARM.exidx.text.OS_InitSemaphore), (8 bytes).
+    Removing os.o(.text.OS_Wait), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Wait), (8 bytes).
+    Removing os.o(.text.OS_Signal), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Signal), (8 bytes).
+    Removing os.o(.text.OS_bWait), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_bWait), (8 bytes).
+    Removing os.o(.text.OS_bSignal), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_bSignal), (8 bytes).
+    Removing os.o(.text.OS_AddThread), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_AddThread), (8 bytes).
+    Removing os.o(.text.OS_AddProcess), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_AddProcess), (8 bytes).
+    Removing os.o(.text.OS_Id), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Id), (8 bytes).
+    Removing os.o(.text.OS_AddPeriodicThread), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_AddPeriodicThread), (8 bytes).
+    Removing os.o(.ARM.exidx.text.GPIOPortF_Handler), (8 bytes).
+    Removing os.o(.text.OS_AddSW1Task), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_AddSW1Task), (8 bytes).
+    Removing os.o(.text.OS_AddSW2Task), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_AddSW2Task), (8 bytes).
+    Removing os.o(.text.OS_Sleep), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Sleep), (8 bytes).
+    Removing os.o(.text.OS_Kill), (6 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Kill), (8 bytes).
+    Removing os.o(.text.OS_Suspend), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Suspend), (8 bytes).
+    Removing os.o(.text.OS_Fifo_Init), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Fifo_Init), (8 bytes).
+    Removing os.o(.text.OS_Fifo_Put), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Fifo_Put), (8 bytes).
+    Removing os.o(.text.OS_Fifo_Get), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Fifo_Get), (8 bytes).
+    Removing os.o(.text.OS_Fifo_Size), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Fifo_Size), (8 bytes).
+    Removing os.o(.text.OS_MailBox_Init), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_MailBox_Init), (8 bytes).
+    Removing os.o(.text.OS_MailBox_Send), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_MailBox_Send), (8 bytes).
+    Removing os.o(.text.OS_MailBox_Recv), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_MailBox_Recv), (8 bytes).
+    Removing os.o(.text.OS_Time), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Time), (8 bytes).
+    Removing os.o(.text.OS_TimeDifference), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_TimeDifference), (8 bytes).
+    Removing os.o(.ARM.exidx.text.OS_ClearMsTime), (8 bytes).
+    Removing os.o(.ARM.exidx.text.OS_MsTime), (8 bytes).
+    Removing os.o(.text.OS_Launch), (2 bytes).
+    Removing os.o(.ARM.exidx.text.OS_Launch), (8 bytes).
+    Removing os.o(.text.fputc), (56 bytes).
+    Removing os.o(.ARM.exidx.text.fputc), (8 bytes).
+    Removing os.o(.text.OS_EndRedirectToFile), (26 bytes).
+    Removing os.o(.ARM.exidx.text.OS_EndRedirectToFile), (8 bytes).
+    Removing os.o(.text.fgetc), (16 bytes).
+    Removing os.o(.ARM.exidx.text.fgetc), (8 bytes).
+    Removing os.o(.text.OS_RedirectToFile), (38 bytes).
+    Removing os.o(.ARM.exidx.text.OS_RedirectToFile), (8 bytes).
+    Removing os.o(.text.OS_RedirectToUART), (16 bytes).
+    Removing os.o(.ARM.exidx.text.OS_RedirectToUART), (8 bytes).
+    Removing os.o(.text.OS_RedirectToST7735), (4 bytes).
+    Removing os.o(.ARM.exidx.text.OS_RedirectToST7735), (8 bytes).
+    Removing os.o(.rodata.JitterSize), (4 bytes).
+    Removing os.o(.bss.JitterHistogram), (256 bytes).
+    Removing os.o(.bss.StreamToDevice), (4 bytes).
+    Removing os.o(.bss.MaxJitter), (4 bytes).
+    Removing interpreter.o(.text), (0 bytes).
+    Removing interpreter.o(.ARM.exidx.text.writeToLCD), (8 bytes).
+    Removing interpreter.o(.ARM.exidx.text.printADC), (8 bytes).
+    Removing interpreter.o(.ARM.exidx.text.getTime), (8 bytes).
+    Removing interpreter.o(.ARM.exidx.text.help), (8 bytes).
+    Removing interpreter.o(.ARM.exidx.text.clear), (8 bytes).
+    Removing interpreter.o(.text.Jitter), (2 bytes).
+    Removing interpreter.o(.ARM.exidx.text.Jitter), (8 bytes).
+    Removing interpreter.o(.text.isCommand), (44 bytes).
+    Removing interpreter.o(.ARM.exidx.text.isCommand), (8 bytes).
+    Removing interpreter.o(.ARM.exidx.text.Interpreter), (8 bytes).
+    Removing launchpad.o(.text), (0 bytes).
+    Removing launchpad.o(.ARM.exidx.text.LaunchPad_Init), (8 bytes).
+    Removing launchpad.o(.text.LaunchPad_Input), (28 bytes).
+    Removing launchpad.o(.ARM.exidx.text.LaunchPad_Input), (8 bytes).
+    Removing launchpad.o(.text.LaunchPad_WaitForTouch), (66 bytes).
+    Removing launchpad.o(.ARM.exidx.text.LaunchPad_WaitForTouch), (8 bytes).
+    Removing launchpad.o(.text.LaunchPad_WaitForRelease), (102 bytes).
+    Removing launchpad.o(.ARM.exidx.text.LaunchPad_WaitForRelease), (8 bytes).
+    Removing launchpad.o(.text.LaunchPad_Output), (14 bytes).
+    Removing launchpad.o(.ARM.exidx.text.LaunchPad_Output), (8 bytes).
+    Removing pll.o(.text), (0 bytes).
+    Removing pll.o(.ARM.exidx.text.PLL_Init), (8 bytes).
+    Removing st7735.o(.text), (0 bytes).
+    Removing st7735.o(.text.Delay1ms), (42 bytes).
+    Removing st7735.o(.ARM.exidx.text.Delay1ms), (8 bytes).
+    Removing st7735.o(.text.ST7735_InitfB), (130 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_InitfB), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.commonInit), (8 bytes).
+    Removing st7735.o(.text.ST7735_SetCursor), (32 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_SetCursor), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_FillScreen), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_InitR), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.commandList), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawPixel), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.setAddrWindow), (8 bytes).
+    Removing st7735.o(.text.ST7735_DrawFastVLine), (208 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawFastVLine), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawFastHLine), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_FillRect), (8 bytes).
+    Removing st7735.o(.text.ST7735_DrawSmallCircle), (260 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawSmallCircle), (8 bytes).
+    Removing st7735.o(.text.ST7735_DrawCircle), (260 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawCircle), (8 bytes).
+    Removing st7735.o(.text.ST7735_Color565), (20 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_Color565), (8 bytes).
+    Removing st7735.o(.text.ST7735_SwapColor), (16 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_SwapColor), (8 bytes).
+    Removing st7735.o(.text.ST7735_DrawBitmap), (384 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawBitmap), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawCharS), (8 bytes).
+    Removing st7735.o(.text.ST7735_DrawChar), (490 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawChar), (8 bytes).
+    Removing st7735.o(.text.ST7735_DrawString), (106 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_DrawString), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.fillmessage), (8 bytes).
+    Removing st7735.o(.text.fillmessage4), (74 bytes).
+    Removing st7735.o(.ARM.exidx.text.fillmessage4), (8 bytes).
+    Removing st7735.o(.text.fillmessage5), (104 bytes).
+    Removing st7735.o(.ARM.exidx.text.fillmessage5), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_OutUDec), (8 bytes).
+    Removing st7735.o(.text.ST7735_OutUDec2), (134 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_OutUDec2), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_Message), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_OutChar), (8 bytes).
+    Removing st7735.o(.text.ST7735_MessageString), (110 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_MessageString), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_MessageDelay), (8 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_MessageNum), (8 bytes).
+    Removing st7735.o(.text.ST7735_OutUDec4), (350 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_OutUDec4), (8 bytes).
+    Removing st7735.o(.text.ST7735_OutUDec5), (382 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_OutUDec5), (8 bytes).
+    Removing st7735.o(.text.ST7735_SetRotation), (446 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_SetRotation), (8 bytes).
+    Removing st7735.o(.text.ST7735_InvertDisplay), (118 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_InvertDisplay), (8 bytes).
+    Removing st7735.o(.text.ST7735_PlotClear), (88 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_PlotClear), (8 bytes).
+    Removing st7735.o(.text.ST7735_PlotPoint), (144 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_PlotPoint), (8 bytes).
+    Removing st7735.o(.text.ST7735_PlotLine), (284 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_PlotLine), (8 bytes).
+    Removing st7735.o(.text.ST7735_PlotPoints), (160 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_PlotPoints), (8 bytes).
+    Removing st7735.o(.text.ST7735_PlotBar), (82 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_PlotBar), (8 bytes).
+    Removing st7735.o(.text.ST7735_PlotdBfs), (52 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_PlotdBfs), (8 bytes).
+    Removing st7735.o(.text.ST7735_PlotNext), (22 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_PlotNext), (8 bytes).
+    Removing st7735.o(.text.ST7735_PlotNextErase), (48 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_PlotNextErase), (8 bytes).
+    Removing st7735.o(.text.ST7735_OutString), (32 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_OutString), (8 bytes).
+    Removing st7735.o(.text.ST7735_SetTextColor), (12 bytes).
+    Removing st7735.o(.ARM.exidx.text.ST7735_SetTextColor), (8 bytes).
+    Removing st7735.o(.rodata.Bcmd), (103 bytes).
+    Removing st7735.o(.rodata.smallCircle), (36 bytes).
+    Removing st7735.o(.rodata.circle), (60 bytes).
+    Removing st7735.o(.bss.Ymax), (4 bytes).
+    Removing st7735.o(.bss.Ymin), (4 bytes).
+    Removing st7735.o(.bss.Yrange), (4 bytes).
+    Removing st7735.o(.bss.X), (4 bytes).
+    Removing st7735.o(.bss.lastj), (4 bytes).
+    Removing st7735.o(.rodata.dBfs), (512 bytes).
+    Removing uart0int.o(.text), (0 bytes).
+    Removing uart0int.o(.text.RxFifo_Init), (24 bytes).
+    Removing uart0int.o(.ARM.exidx.text.RxFifo_Init), (8 bytes).
+    Removing uart0int.o(.text.RxFifo_Put), (58 bytes).
+    Removing uart0int.o(.ARM.exidx.text.RxFifo_Put), (8 bytes).
+    Removing uart0int.o(.text.RxFifo_Get), (56 bytes).
+    Removing uart0int.o(.ARM.exidx.text.RxFifo_Get), (8 bytes).
+    Removing uart0int.o(.text.RxFifo_Size), (26 bytes).
+    Removing uart0int.o(.ARM.exidx.text.RxFifo_Size), (8 bytes).
+    Removing uart0int.o(.text.TxFifo_Init), (24 bytes).
+    Removing uart0int.o(.ARM.exidx.text.TxFifo_Init), (8 bytes).
+    Removing uart0int.o(.text.TxFifo_Put), (58 bytes).
+    Removing uart0int.o(.ARM.exidx.text.TxFifo_Put), (8 bytes).
+    Removing uart0int.o(.text.TxFifo_Get), (56 bytes).
+    Removing uart0int.o(.ARM.exidx.text.TxFifo_Get), (8 bytes).
+    Removing uart0int.o(.text.TxFifo_Size), (26 bytes).
+    Removing uart0int.o(.ARM.exidx.text.TxFifo_Size), (8 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_Init), (8 bytes).
+    Removing uart0int.o(.text.UART_InChar), (64 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_InChar), (8 bytes).
+    Removing uart0int.o(.text.UART_InCharNonBlock), (56 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_InCharNonBlock), (8 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_OutChar), (8 bytes).
+    Removing uart0int.o(.text.UART_OutCharNonBlock), (156 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_OutCharNonBlock), (8 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART0_Handler), (8 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_OutString), (8 bytes).
+    Removing uart0int.o(.text.UART_InUDec), (454 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_InUDec), (8 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_OutUDec), (8 bytes).
+    Removing uart0int.o(.text.UART_OutSDec), (172 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_OutSDec), (8 bytes).
+    Removing uart0int.o(.text.UART_InUHex), (486 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_InUHex), (8 bytes).
+    Removing uart0int.o(.text.UART_OutUHex), (310 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_OutUHex), (8 bytes).
+    Removing uart0int.o(.text.Fixed_Fix2Str), (256 bytes).
+    Removing uart0int.o(.ARM.exidx.text.Fixed_Fix2Str), (8 bytes).
+    Removing uart0int.o(.text.UART_Fix2), (448 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_Fix2), (8 bytes).
+    Removing uart0int.o(.ARM.exidx.text.UART_InString), (8 bytes).
+    Removing adcswtrigger.o(.text), (0 bytes).
+    Removing adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3_Ch9), (188 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq3_Ch9), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3_Ch7), (188 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq3_Ch7), (8 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq3), (8 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC0_InSeq3), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC_Init89), (180 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC_Init89), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC_In89), (48 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC_In89), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC0_InitSWTriggerSeq2), (174 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq2), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC0_InSeq2), (62 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC0_InSeq2), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3_InternalTemperature), (106 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC0_InitSWTriggerSeq3_InternalTemperature), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC0_InSeq3_InternalTemperature), (46 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC0_InSeq3_InternalTemperature), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC_Init3210), (194 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC_Init3210), (8 bytes).
+    Removing adcswtrigger.o(.text.ADC_In3210), (64 bytes).
+    Removing adcswtrigger.o(.ARM.exidx.text.ADC_In3210), (8 bytes).
+    Removing adcswtrigger.o(.bss.UserTask2), (4 bytes).
+    Removing lpf.o(.text), (0 bytes).
+    Removing lpf.o(.text.sqrt2), (44 bytes).
+    Removing lpf.o(.ARM.exidx.text.sqrt2), (8 bytes).
+    Removing lpf.o(.text.LPF_Init), (78 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Init), (8 bytes).
+    Removing lpf.o(.text.LPF_Calc), (76 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Calc), (8 bytes).
+    Removing lpf.o(.text.Noise), (150 bytes).
+    Removing lpf.o(.ARM.exidx.text.Noise), (8 bytes).
+    Removing lpf.o(.text.LPF_Init2), (78 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Init2), (8 bytes).
+    Removing lpf.o(.text.LPF_Calc2), (76 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Calc2), (8 bytes).
+    Removing lpf.o(.text.Noise2), (150 bytes).
+    Removing lpf.o(.ARM.exidx.text.Noise2), (8 bytes).
+    Removing lpf.o(.text.LPF_Init3), (78 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Init3), (8 bytes).
+    Removing lpf.o(.text.LPF_Calc3), (76 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Calc3), (8 bytes).
+    Removing lpf.o(.text.Noise3), (150 bytes).
+    Removing lpf.o(.ARM.exidx.text.Noise3), (8 bytes).
+    Removing lpf.o(.text.LPF_Init4), (78 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Init4), (8 bytes).
+    Removing lpf.o(.text.LPF_Calc4), (76 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Calc4), (8 bytes).
+    Removing lpf.o(.text.Noise4), (150 bytes).
+    Removing lpf.o(.ARM.exidx.text.Noise4), (8 bytes).
+    Removing lpf.o(.text.LPF_Init5), (78 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Init5), (8 bytes).
+    Removing lpf.o(.text.LPF_Calc5), (76 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Calc5), (8 bytes).
+    Removing lpf.o(.text.Noise5), (150 bytes).
+    Removing lpf.o(.ARM.exidx.text.Noise5), (8 bytes).
+    Removing lpf.o(.text.LPF_Init6), (78 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Init6), (8 bytes).
+    Removing lpf.o(.text.LPF_Calc6), (76 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Calc6), (8 bytes).
+    Removing lpf.o(.text.Noise6), (150 bytes).
+    Removing lpf.o(.ARM.exidx.text.Noise6), (8 bytes).
+    Removing lpf.o(.text.LPF_Init7), (78 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Init7), (8 bytes).
+    Removing lpf.o(.text.LPF_Calc7), (76 bytes).
+    Removing lpf.o(.ARM.exidx.text.LPF_Calc7), (8 bytes).
+    Removing lpf.o(.text.Noise7), (150 bytes).
+    Removing lpf.o(.ARM.exidx.text.Noise7), (8 bytes).
+    Removing lpf.o(.ARM.exidx.text.Median), (8 bytes).
+    Removing lpf.o(.text.Filter), (134 bytes).
+    Removing lpf.o(.ARM.exidx.text.Filter), (8 bytes).
+    Removing lpf.o(.bss.Size1), (4 bytes).
+    Removing lpf.o(.bss.I1), (4 bytes).
+    Removing lpf.o(.bss.LPFSum1), (4 bytes).
+    Removing lpf.o(.bss.x1), (64 bytes).
+    Removing lpf.o(.bss.sigma1), (4 bytes).
+    Removing lpf.o(.bss.snr1), (4 bytes).
+    Removing lpf.o(.bss.Size2), (4 bytes).
+    Removing lpf.o(.bss.I2), (4 bytes).
+    Removing lpf.o(.bss.LPFSum2), (4 bytes).
+    Removing lpf.o(.bss.x2), (64 bytes).
+    Removing lpf.o(.bss.sigma2), (4 bytes).
+    Removing lpf.o(.bss.snr2), (4 bytes).
+    Removing lpf.o(.bss.Size3), (4 bytes).
+    Removing lpf.o(.bss.I3), (4 bytes).
+    Removing lpf.o(.bss.LPFSum3), (4 bytes).
+    Removing lpf.o(.bss.x3), (64 bytes).
+    Removing lpf.o(.bss.sigma3), (4 bytes).
+    Removing lpf.o(.bss.snr3), (4 bytes).
+    Removing lpf.o(.bss.Size4), (4 bytes).
+    Removing lpf.o(.bss.I4), (4 bytes).
+    Removing lpf.o(.bss.LPFSum4), (4 bytes).
+    Removing lpf.o(.bss.x4), (64 bytes).
+    Removing lpf.o(.bss.sigma4), (4 bytes).
+    Removing lpf.o(.bss.snr4), (4 bytes).
+    Removing lpf.o(.bss.Size5), (4 bytes).
+    Removing lpf.o(.bss.I5), (4 bytes).
+    Removing lpf.o(.bss.LPFSum5), (4 bytes).
+    Removing lpf.o(.bss.x5), (64 bytes).
+    Removing lpf.o(.bss.sigma5), (4 bytes).
+    Removing lpf.o(.bss.snr5), (4 bytes).
+    Removing lpf.o(.bss.Size6), (4 bytes).
+    Removing lpf.o(.bss.I6), (4 bytes).
+    Removing lpf.o(.bss.LPFSum6), (4 bytes).
+    Removing lpf.o(.bss.x6), (64 bytes).
+    Removing lpf.o(.bss.sigma6), (4 bytes).
+    Removing lpf.o(.bss.snr6), (4 bytes).
+    Removing lpf.o(.bss.Size7), (4 bytes).
+    Removing lpf.o(.bss.I7), (4 bytes).
+    Removing lpf.o(.bss.LPFSum7), (4 bytes).
+    Removing lpf.o(.bss.x7), (64 bytes).
+    Removing lpf.o(.bss.sigma7), (4 bytes).
+    Removing lpf.o(.bss.snr7), (4 bytes).
+    Removing lpf.o(.bss.Filter.x), (24 bytes).
+    Removing lpf.o(.bss.Filter.y), (24 bytes).
+    Removing lpf.o(.data.Filter.n), (4 bytes).
+    Removing irdistance.o(.text), (0 bytes).
+    Removing irdistance.o(.ARM.exidx.text.IRDistance_Convert), (8 bytes).
+    Removing irdistance.o(.rodata.C), (16 bytes).
+    Removing timer4a.o(.text), (0 bytes).
+    Removing timer4a.o(.ARM.exidx.text.Timer4A_Init), (8 bytes).
+    Removing timer4a.o(.ARM.exidx.text.Timer4A_Handler), (8 bytes).
+    Removing timer4a.o(.text.Timer4A_Stop), (26 bytes).
+    Removing timer4a.o(.ARM.exidx.text.Timer4A_Stop), (8 bytes).
+    Removing wtimer0a.o(.text), (0 bytes).
+    Removing wtimer0a.o(.text.WideTimer0A_Init), (120 bytes).
+    Removing wtimer0a.o(.ARM.exidx.text.WideTimer0A_Init), (8 bytes).
+    Removing wtimer0a.o(.ARM.exidx.text.WideTimer0A_Handler), (8 bytes).
+    Removing wtimer0a.o(.text.WideTimer0_Stop), (28 bytes).
+    Removing wtimer0a.o(.ARM.exidx.text.WideTimer0_Stop), (8 bytes).
+    Removing edisk.o(.text), (0 bytes).
+    Removing edisk.o(.ARM.exidx.text.CS_Init), (8 bytes).
+    Removing edisk.o(.text.SSI0_Init), (370 bytes).
+    Removing edisk.o(.ARM.exidx.text.SSI0_Init), (8 bytes).
+    Removing edisk.o(.text.eDisk_Init), (456 bytes).
+    Removing edisk.o(.ARM.exidx.text.eDisk_Init), (8 bytes).
+    Removing edisk.o(.text.send_cmd), (502 bytes).
+    Removing edisk.o(.ARM.exidx.text.send_cmd), (8 bytes).
+    Removing edisk.o(.text.eDisk_Status), (20 bytes).
+    Removing edisk.o(.ARM.exidx.text.eDisk_Status), (8 bytes).
+    Removing edisk.o(.text.eDisk_Read), (200 bytes).
+    Removing edisk.o(.ARM.exidx.text.eDisk_Read), (8 bytes).
+    Removing edisk.o(.text.rcvr_datablock), (172 bytes).
+    Removing edisk.o(.ARM.exidx.text.rcvr_datablock), (8 bytes).
+    Removing edisk.o(.text.eDisk_ReadBlock), (124 bytes).
+    Removing edisk.o(.ARM.exidx.text.eDisk_ReadBlock), (8 bytes).
+    Removing edisk.o(.text.eDisk_Write), (298 bytes).
+    Removing edisk.o(.ARM.exidx.text.eDisk_Write), (8 bytes).
+    Removing edisk.o(.text.xmit_datablock), (236 bytes).
+    Removing edisk.o(.ARM.exidx.text.xmit_datablock), (8 bytes).
+    Removing edisk.o(.text.eDisk_WriteBlock), (132 bytes).
+    Removing edisk.o(.ARM.exidx.text.eDisk_WriteBlock), (8 bytes).
+    Removing edisk.o(.text.disk_ioctl), (644 bytes).
+    Removing edisk.o(.ARM.exidx.text.disk_ioctl), (8 bytes).
+    Removing edisk.o(.text.disk_timerproc), (58 bytes).
+    Removing edisk.o(.ARM.exidx.text.disk_timerproc), (8 bytes).
+    Removing edisk.o(.data.Stat), (1 bytes).
+    Removing edisk.o(.bss.Timer1), (4 bytes).
+    Removing edisk.o(.bss.CardType), (1 bytes).
+    Removing edisk.o(.bss.Timer2), (4 bytes).
+    Removing efile.o(.text), (0 bytes).
+    Removing efile.o(.text.eFile_Init), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_Init), (8 bytes).
+    Removing efile.o(.text.eFile_Format), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_Format), (8 bytes).
+    Removing efile.o(.text.eFile_Mount), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_Mount), (8 bytes).
+    Removing efile.o(.text.eFile_Create), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_Create), (8 bytes).
+    Removing efile.o(.text.eFile_WOpen), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_WOpen), (8 bytes).
+    Removing efile.o(.text.eFile_Write), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_Write), (8 bytes).
+    Removing efile.o(.text.eFile_WClose), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_WClose), (8 bytes).
+    Removing efile.o(.text.eFile_ROpen), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_ROpen), (8 bytes).
+    Removing efile.o(.text.eFile_ReadNext), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_ReadNext), (8 bytes).
+    Removing efile.o(.text.eFile_RClose), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_RClose), (8 bytes).
+    Removing efile.o(.text.eFile_Delete), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_Delete), (8 bytes).
+    Removing efile.o(.text.eFile_DOpen), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_DOpen), (8 bytes).
+    Removing efile.o(.text.eFile_DirNext), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_DirNext), (8 bytes).
+    Removing efile.o(.text.eFile_DClose), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_DClose), (8 bytes).
+    Removing efile.o(.text.eFile_Unmount), (4 bytes).
+    Removing efile.o(.ARM.exidx.text.eFile_Unmount), (8 bytes).
+    Removing adc.o(.text), (0 bytes).
+    Removing adc.o(.ARM.exidx.text.ADC_Init), (8 bytes).
+    Removing adc.o(.ARM.exidx.text.ADC_In), (8 bytes).
+    Removing timer0a.o(.text), (0 bytes).
+    Removing timer0a.o(.ARM.exidx.text.Timer0A_Init), (8 bytes).
+    Removing timer0a.o(.ARM.exidx.text.Timer0A_Handler), (8 bytes).
+    Removing timer0a.o(.text.Timer0A_Stop), (26 bytes).
+    Removing timer0a.o(.ARM.exidx.text.Timer0A_Stop), (8 bytes).
+
+431 unused section(s) (total 18125 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    ../clib/../cmprslib/zerorunl.c           0x00000000   Number         0  __dczerorl.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  ctype_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isalnum_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isalpha_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isblank_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  iscntrl_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isdigit_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isgraph_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  islower_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isprint_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  ispunct_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isspace_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isupper_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isxdigit_o.o ABSOLUTE
+    ../clib/microlib/ctype/tolower.c         0x00000000   Number         0  tolower.o ABSOLUTE
+    ../clib/microlib/errno.c                 0x00000000   Number         0  errno.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
+    ../clib/microlib/string/strcmp.c         0x00000000   Number         0  strcmp.o ABSOLUTE
+    ../clib/microlib/string/strcpy.c         0x00000000   Number         0  strcpy.o ABSOLUTE
+    ../clib/microlib/string/strlen.c         0x00000000   Number         0  strlen.o ABSOLUTE
+    ../clib/microlib/string/strtok.c         0x00000000   Number         0  strtok.o ABSOLUTE
+    ../clib/microlib/string/strtok.c         0x00000000   Number         0  strtok_r.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  atoi.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  strtol.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  _strtoul.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  _chval.o ABSOLUTE
+    ADC.c                                    0x00000000   Number         0  adc.o ABSOLUTE
+    ADCSWTrigger.c                           0x00000000   Number         0  adcswtrigger.o ABSOLUTE
+    IRDistance.c                             0x00000000   Number         0  irdistance.o ABSOLUTE
+    Interpreter.c                            0x00000000   Number         0  interpreter.o ABSOLUTE
+    LPF.c                                    0x00000000   Number         0  lpf.o ABSOLUTE
+    Lab1.c                                   0x00000000   Number         0  lab1.o ABSOLUTE
+    LaunchPad.c                              0x00000000   Number         0  launchpad.o ABSOLUTE
+    OS.c                                     0x00000000   Number         0  os.o ABSOLUTE
+    PLL.c                                    0x00000000   Number         0  pll.o ABSOLUTE
+    ST7735.c                                 0x00000000   Number         0  st7735.o ABSOLUTE
+    Timer0A.c                                0x00000000   Number         0  timer0a.o ABSOLUTE
+    Timer4A.c                                0x00000000   Number         0  timer4a.o ABSOLUTE
+    UART0int.c                               0x00000000   Number         0  uart0int.o ABSOLUTE
+    WTimer0A.c                               0x00000000   Number         0  wtimer0a.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    eDisk.c                                  0x00000000   Number         0  edisk.o ABSOLUTE
+    efile.c                                  0x00000000   Number         0  efile.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    startup.s                                0x00000000   Number         0  startup.o ABSOLUTE
+    RESET                                    0x00000000   Section      644  startup.o(RESET)
+    .ARM.Collect$$$$00000000                 0x00000284   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x00000284   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x00000288   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000008                 0x0000028c   Section        0  entry7b.o(.ARM.Collect$$$$00000008)
+    .ARM.Collect$$$$0000000A                 0x0000028c   Section        0  entry8b.o(.ARM.Collect$$$$0000000A)
+    .ARM.Collect$$$$0000000B                 0x0000028c   Section        8  entry9a.o(.ARM.Collect$$$$0000000B)
+    __lit__00000000                          0x00000294   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .ARM.Collect$$$$0000000D                 0x00000294   Section        0  entry10a.o(.ARM.Collect$$$$0000000D)
+    .ARM.Collect$$$$0000000F                 0x00000294   Section        0  entry11a.o(.ARM.Collect$$$$0000000F)
+    .ARM.Collect$$$$00002712                 0x00000294   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    .text                                    0x00000298   Section       28  startup.o(.text)
+    .text                                    0x000002b4   Section        0  tolower.o(.text)
+    .text                                    0x000002c0   Section        0  memseta.o(.text)
+    .text                                    0x000002e4   Section        0  strlen.o(.text)
+    .text                                    0x000002f2   Section        0  strcmp.o(.text)
+    .text                                    0x0000030e   Section        0  strcpy.o(.text)
+    .text                                    0x00000320   Section        0  strtok.o(.text)
+    .text                                    0x00000364   Section        0  atoi.o(.text)
+    .text                                    0x0000037e   Section        0  strtol.o(.text)
+    .text                                    0x000003f0   Section       48  init.o(.text)
+    .text                                    0x00000420   Section        0  ctype_o.o(.text)
+    .text                                    0x00000428   Section        0  _strtoul.o(.text)
+    .text                                    0x000004c6   Section        0  _chval.o(.text)
+    .text                                    0x000004e2   Section        0  __dczerorl.o(.text)
+    [Anonymous Symbol]                       0x0000051c   Section        0  adcswtrigger.o(.text.ADC0_InSeq3)
+    [Anonymous Symbol]                       0x0000053c   Section        0  adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3)
+    [Anonymous Symbol]                       0x00000730   Section        0  adc.o(.text.ADC_In)
+    [Anonymous Symbol]                       0x00000734   Section        0  adc.o(.text.ADC_Init)
+    [Anonymous Symbol]                       0x00000740   Section        0  edisk.o(.text.CS_Init)
+    [Anonymous Symbol]                       0x000007ac   Section        0  lab1.o(.text.DAStask)
+    [Anonymous Symbol]                       0x0000080c   Section        0  os.o(.text.GPIOPortF_Handler)
+    [Anonymous Symbol]                       0x00000810   Section        0  irdistance.o(.text.IRDistance_Convert)
+    [Anonymous Symbol]                       0x00000848   Section        0  interpreter.o(.text.Interpreter)
+    [Anonymous Symbol]                       0x00000980   Section        0  launchpad.o(.text.LaunchPad_Init)
+    [Anonymous Symbol]                       0x000009c8   Section        0  lpf.o(.text.Median)
+    [Anonymous Symbol]                       0x00000a14   Section        0  os.o(.text.OS_ClearMsTime)
+    [Anonymous Symbol]                       0x00000a24   Section        0  os.o(.text.OS_InitSemaphore)
+    [Anonymous Symbol]                       0x00000a28   Section        0  os.o(.text.OS_MsTime)
+    [Anonymous Symbol]                       0x00000a34   Section        0  pll.o(.text.PLL_Init)
+    [Anonymous Symbol]                       0x00000aa0   Section        0  st7735.o(.text.ST7735_DrawCharS)
+    [Anonymous Symbol]                       0x00000b90   Section        0  st7735.o(.text.ST7735_DrawFastHLine)
+    [Anonymous Symbol]                       0x00000c60   Section        0  st7735.o(.text.ST7735_DrawPixel)
+    [Anonymous Symbol]                       0x00000d20   Section        0  st7735.o(.text.ST7735_FillRect)
+    [Anonymous Symbol]                       0x00000e1c   Section        0  st7735.o(.text.ST7735_FillScreen)
+    [Anonymous Symbol]                       0x00000e60   Section        0  st7735.o(.text.ST7735_InitR)
+    [Anonymous Symbol]                       0x00000f94   Section        0  st7735.o(.text.ST7735_Message)
+    [Anonymous Symbol]                       0x00001018   Section        0  st7735.o(.text.ST7735_MessageDelay)
+    [Anonymous Symbol]                       0x000010a8   Section        0  st7735.o(.text.ST7735_MessageNum)
+    [Anonymous Symbol]                       0x0000113c   Section        0  st7735.o(.text.ST7735_OutChar)
+    [Anonymous Symbol]                       0x000012a4   Section        0  st7735.o(.text.ST7735_OutUDec)
+    [Anonymous Symbol]                       0x000013cc   Section        0  os.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x000013d0   Section        0  timer0a.o(.text.Timer0A_Handler)
+    [Anonymous Symbol]                       0x000013e8   Section        0  timer0a.o(.text.Timer0A_Init)
+    [Anonymous Symbol]                       0x00001464   Section        0  timer4a.o(.text.Timer4A_Handler)
+    [Anonymous Symbol]                       0x0000147c   Section        0  timer4a.o(.text.Timer4A_Init)
+    [Anonymous Symbol]                       0x000014f0   Section        0  uart0int.o(.text.UART0_Handler)
+    [Anonymous Symbol]                       0x00001640   Section        0  uart0int.o(.text.UART_InString)
+    [Anonymous Symbol]                       0x000017e0   Section        0  uart0int.o(.text.UART_Init)
+    [Anonymous Symbol]                       0x000018b0   Section        0  uart0int.o(.text.UART_OutChar)
+    [Anonymous Symbol]                       0x0000194c   Section        0  uart0int.o(.text.UART_OutString)
+    [Anonymous Symbol]                       0x000019f4   Section        0  uart0int.o(.text.UART_OutUDec)
+    [Anonymous Symbol]                       0x00001aac   Section        0  wtimer0a.o(.text.WideTimer0A_Handler)
+    [Anonymous Symbol]                       0x00001ac4   Section        0  interpreter.o(.text.clear)
+    commandList                              0x00001ae5   Thumb Code   218  st7735.o(.text.commandList)
+    [Anonymous Symbol]                       0x00001ae4   Section        0  st7735.o(.text.commandList)
+    commonInit                               0x00001bc1   Thumb Code   414  st7735.o(.text.commonInit)
+    [Anonymous Symbol]                       0x00001bc0   Section        0  st7735.o(.text.commonInit)
+    [Anonymous Symbol]                       0x00001d60   Section        0  st7735.o(.text.fillmessage)
+    [Anonymous Symbol]                       0x00001da8   Section        0  interpreter.o(.text.getTime)
+    [Anonymous Symbol]                       0x00001dc0   Section        0  interpreter.o(.text.help)
+    [Anonymous Symbol]                       0x00001eb0   Section        0  lab1.o(.text.main)
+    [Anonymous Symbol]                       0x00001f18   Section        0  lab1.o(.text.msIterator)
+    [Anonymous Symbol]                       0x00001f28   Section        0  interpreter.o(.text.printADC)
+    setAddrWindow                            0x00001f59   Thumb Code   604  st7735.o(.text.setAddrWindow)
+    [Anonymous Symbol]                       0x00001f58   Section        0  st7735.o(.text.setAddrWindow)
+    [Anonymous Symbol]                       0x000021b4   Section        0  interpreter.o(.text.writeToLCD)
+    i.__aeabi_errno_addr                     0x000021f4   Section        0  errno.o(i.__aeabi_errno_addr)
+    i.__scatterload_copy                     0x000021fc   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0000220a   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x0000220c   Section       14  handlers.o(i.__scatterload_zeroinit)
+    .constdata                               0x0000221a   Section      129  ctype_o.o(.constdata)
+    table                                    0x0000229c   Data           4  ctype_o.o(.constdata)
+    .constdata                               0x0000229c   Section        4  ctype_o.o(.constdata)
+    Font                                     0x000022c0   Data        1275  st7735.o(.rodata.Font)
+    [Anonymous Symbol]                       0x000022c0   Section        0  st7735.o(.rodata.Font)
+    Rcmd1                                    0x000027cc   Data          59  st7735.o(.rodata.Rcmd1)
+    [Anonymous Symbol]                       0x000027cc   Section        0  st7735.o(.rodata.Rcmd1)
+    Rcmd2green                               0x00002807   Data          13  st7735.o(.rodata.Rcmd2green)
+    [Anonymous Symbol]                       0x00002807   Section        0  st7735.o(.rodata.Rcmd2green)
+    Rcmd2red                                 0x00002814   Data          13  st7735.o(.rodata.Rcmd2red)
+    [Anonymous Symbol]                       0x00002814   Section        0  st7735.o(.rodata.Rcmd2red)
+    Rcmd3                                    0x00002821   Data          43  st7735.o(.rodata.Rcmd3)
+    [Anonymous Symbol]                       0x00002821   Section        0  st7735.o(.rodata.Rcmd3)
+    .L.str.1                                 0x0000284c   Data           5  interpreter.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0000284c   Section        0  interpreter.o(.rodata.str1.1)
+    .L.str.2                                 0x00002851   Data          70  interpreter.o(.rodata.str1.1)
+    .L.str                                   0x00002897   Data          22  st7735.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x00002897   Section        0  st7735.o(.rodata.str1.1)
+    state                                    0x20000000   Data           4  strtok.o(.data)
+    .data                                    0x20000000   Section        4  strtok.o(.data)
+    _errno                                   0x20000004   Data           4  errno.o(.data)
+    .data                                    0x20000004   Section        4  errno.o(.data)
+    ColStart                                 0x200001b4   Data           1  st7735.o(.bss.ColStart)
+    [Anonymous Symbol]                       0x200001b4   Section        0  st7735.o(.bss.ColStart)
+    RowStart                                 0x200001e4   Data           1  st7735.o(.bss.RowStart)
+    [Anonymous Symbol]                       0x200001e4   Section        0  st7735.o(.bss.RowStart)
+    RxFifo                                   0x200001e5   Data        1024  uart0int.o(.bss.RxFifo)
+    [Anonymous Symbol]                       0x200001e5   Section        0  uart0int.o(.bss.RxFifo)
+    TabColor                                 0x200005f8   Data           1  st7735.o(.bss.TabColor)
+    [Anonymous Symbol]                       0x200005f8   Section        0  st7735.o(.bss.TabColor)
+    TxFifo                                   0x200005f9   Data        1024  uart0int.o(.bss.TxFifo)
+    [Anonymous Symbol]                       0x200005f9   Section        0  uart0int.o(.bss.TxFifo)
+    _height                                  0x20000a08   Data           1  st7735.o(.bss._height)
+    [Anonymous Symbol]                       0x20000a08   Section        0  st7735.o(.bss._height)
+    _width                                   0x20000a0a   Data           1  st7735.o(.bss._width)
+    [Anonymous Symbol]                       0x20000a0a   Section        0  st7735.o(.bss._width)
+    StackMem                                 0x20000a18   Data           0  startup.o(STACK)
+    STACK                                    0x20000a18   Section     1024  startup.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$~IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __Vectors                                0x00000000   Data           0  startup.o(RESET)
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _microlib_exit                            - Undefined Weak Reference
+    Reset_Handler                            0x0000026d   Thumb Code     0  startup.o(RESET)
+    NMI_Handler                              0x00000271   Thumb Code     2  startup.o(RESET)
+    HardFault_Handler                        0x00000273   Thumb Code     2  startup.o(RESET)
+    MemManage_Handler                        0x00000275   Thumb Code     2  startup.o(RESET)
+    BusFault_Handler                         0x00000277   Thumb Code     2  startup.o(RESET)
+    UsageFault_Handler                       0x00000279   Thumb Code     2  startup.o(RESET)
+    SVC_Handler                              0x0000027b   Thumb Code     2  startup.o(RESET)
+    DebugMon_Handler                         0x0000027d   Thumb Code     2  startup.o(RESET)
+    PendSV_Handler                           0x0000027f   Thumb Code     2  startup.o(RESET)
+    ADC0Seq0_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC0Seq1_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC0Seq2_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC0Seq3_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC1Seq0_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC1Seq1_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC1Seq2_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC1Seq3_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    CAN0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    CAN1_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    CAN2_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    Comp0_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    Comp1_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    Comp2_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    Ethernet_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ExtBus_Handler                           0x00000283   Thumb Code     0  startup.o(RESET)
+    FPU_Handler                              0x00000283   Thumb Code     0  startup.o(RESET)
+    Fan0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    FlashCtl_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortA_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortB_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortC_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortD_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortE_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortG_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortH_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortJ_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortK_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortL_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortM_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortN_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP1_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP2_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP3_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP4_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP5_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP6_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP7_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ1_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ2_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ3_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ4_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ5_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ6_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ7_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortR_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortS_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    Hibernate_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C1_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C2_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C3_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C4_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C5_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2S0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    LPC0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    PECI0_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Fault_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Generator0_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Generator1_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Generator2_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Generator3_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Fault_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Generator0_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Generator1_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Generator2_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Generator3_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    Quadrature0_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    Quadrature1_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    Quadrature2_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    SSI0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    SSI1_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    SSI2_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    SSI3_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    SysCtl_Handler                           0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer0B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer1A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer1B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer2A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer2B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer3A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer3B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer4B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer5A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer5B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    UART1_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART2_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART3_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART4_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART5_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART6_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART7_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    USB0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    WDT_Handler                              0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer0B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer1A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer1B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer2A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer2B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer3A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer3B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer4A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer4B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer5A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer5B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    uDMA_Error                               0x00000283   Thumb Code     0  startup.o(RESET)
+    uDMA_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    __main                                   0x00000285   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x00000285   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x00000289   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x0000028d   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_clock                              0x0000028d   Thumb Code     0  entry7b.o(.ARM.Collect$$$$00000008)
+    _main_cpp_init                           0x0000028d   Thumb Code     0  entry8b.o(.ARM.Collect$$$$0000000A)
+    _main_init                               0x0000028d   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
+    __rt_final_cpp                           0x00000295   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000D)
+    __rt_final_exit                          0x00000295   Thumb Code     0  entry11a.o(.ARM.Collect$$$$0000000F)
+    DisableInterrupts                        0x00000299   Thumb Code     0  startup.o(.text)
+    EnableInterrupts                         0x0000029d   Thumb Code     0  startup.o(.text)
+    StartCritical                            0x000002a1   Thumb Code     0  startup.o(.text)
+    EndCritical                              0x000002a9   Thumb Code     0  startup.o(.text)
+    WaitForInterrupt                         0x000002af   Thumb Code     0  startup.o(.text)
+    tolower                                  0x000002b5   Thumb Code    12  tolower.o(.text)
+    __aeabi_memset                           0x000002c1   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x000002c1   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x000002c1   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x000002cf   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x000002cf   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x000002cf   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x000002d3   Thumb Code    18  memseta.o(.text)
+    strlen                                   0x000002e5   Thumb Code    14  strlen.o(.text)
+    strcmp                                   0x000002f3   Thumb Code    28  strcmp.o(.text)
+    strcpy                                   0x0000030f   Thumb Code    18  strcpy.o(.text)
+    strtok                                   0x00000321   Thumb Code    62  strtok.o(.text)
+    atoi                                     0x00000365   Thumb Code    26  atoi.o(.text)
+    strtol                                   0x0000037f   Thumb Code   112  strtol.o(.text)
+    __scatterload                            0x000003f1   Thumb Code    38  init.o(.text)
+    __scatterload_rt2                        0x000003f1   Thumb Code     0  init.o(.text)
+    __rt_ctype_table                         0x00000421   Thumb Code     4  ctype_o.o(.text)
+    _strtoul                                 0x00000429   Thumb Code   158  _strtoul.o(.text)
+    _chval                                   0x000004c7   Thumb Code    28  _chval.o(.text)
+    __decompress                             0x000004e3   Thumb Code     0  __dczerorl.o(.text)
+    __decompress0                            0x000004e3   Thumb Code    58  __dczerorl.o(.text)
+    ADC0_InSeq3                              0x0000051d   Thumb Code    32  adcswtrigger.o(.text.ADC0_InSeq3)
+    ADC0_InitSWTriggerSeq3                   0x0000053d   Thumb Code   452  adcswtrigger.o(.text.ADC0_InitSWTriggerSeq3)
+    ADC_In                                   0x00000731   Thumb Code     4  adc.o(.text.ADC_In)
+    ADC_Init                                 0x00000735   Thumb Code    10  adc.o(.text.ADC_Init)
+    CS_Init                                  0x00000741   Thumb Code   106  edisk.o(.text.CS_Init)
+    DAStask                                  0x000007ad   Thumb Code    96  lab1.o(.text.DAStask)
+    GPIOPortF_Handler                        0x0000080d   Thumb Code     2  os.o(.text.GPIOPortF_Handler)
+    IRDistance_Convert                       0x00000811   Thumb Code    54  irdistance.o(.text.IRDistance_Convert)
+    Interpreter                              0x00000849   Thumb Code   276  interpreter.o(.text.Interpreter)
+    LaunchPad_Init                           0x00000981   Thumb Code    70  launchpad.o(.text.LaunchPad_Init)
+    Median                                   0x000009c9   Thumb Code    74  lpf.o(.text.Median)
+    OS_ClearMsTime                           0x00000a15   Thumb Code    14  os.o(.text.OS_ClearMsTime)
+    OS_InitSemaphore                         0x00000a25   Thumb Code     2  os.o(.text.OS_InitSemaphore)
+    OS_MsTime                                0x00000a29   Thumb Code    12  os.o(.text.OS_MsTime)
+    PLL_Init                                 0x00000a35   Thumb Code   106  pll.o(.text.PLL_Init)
+    ST7735_DrawCharS                         0x00000aa1   Thumb Code   240  st7735.o(.text.ST7735_DrawCharS)
+    ST7735_DrawFastHLine                     0x00000b91   Thumb Code   208  st7735.o(.text.ST7735_DrawFastHLine)
+    ST7735_DrawPixel                         0x00000c61   Thumb Code   190  st7735.o(.text.ST7735_DrawPixel)
+    ST7735_FillRect                          0x00000d21   Thumb Code   252  st7735.o(.text.ST7735_FillRect)
+    ST7735_FillScreen                        0x00000e1d   Thumb Code    68  st7735.o(.text.ST7735_FillScreen)
+    ST7735_InitR                             0x00000e61   Thumb Code   306  st7735.o(.text.ST7735_InitR)
+    ST7735_Message                           0x00000f95   Thumb Code   132  st7735.o(.text.ST7735_Message)
+    ST7735_MessageDelay                      0x00001019   Thumb Code   142  st7735.o(.text.ST7735_MessageDelay)
+    ST7735_MessageNum                        0x000010a9   Thumb Code   146  st7735.o(.text.ST7735_MessageNum)
+    ST7735_OutChar                           0x0000113d   Thumb Code   358  st7735.o(.text.ST7735_OutChar)
+    ST7735_OutUDec                           0x000012a5   Thumb Code   294  st7735.o(.text.ST7735_OutUDec)
+    SysTick_Handler                          0x000013cd   Thumb Code     2  os.o(.text.SysTick_Handler)
+    Timer0A_Handler                          0x000013d1   Thumb Code    22  timer0a.o(.text.Timer0A_Handler)
+    Timer0A_Init                             0x000013e9   Thumb Code   122  timer0a.o(.text.Timer0A_Init)
+    Timer4A_Handler                          0x00001465   Thumb Code    24  timer4a.o(.text.Timer4A_Handler)
+    Timer4A_Init                             0x0000147d   Thumb Code   114  timer4a.o(.text.Timer4A_Init)
+    UART0_Handler                            0x000014f1   Thumb Code   336  uart0int.o(.text.UART0_Handler)
+    UART_InString                            0x00001641   Thumb Code   414  uart0int.o(.text.UART_InString)
+    UART_Init                                0x000017e1   Thumb Code   208  uart0int.o(.text.UART_Init)
+    UART_OutChar                             0x000018b1   Thumb Code   156  uart0int.o(.text.UART_OutChar)
+    UART_OutString                           0x0000194d   Thumb Code   168  uart0int.o(.text.UART_OutString)
+    UART_OutUDec                             0x000019f5   Thumb Code   184  uart0int.o(.text.UART_OutUDec)
+    WideTimer0A_Handler                      0x00001aad   Thumb Code    24  wtimer0a.o(.text.WideTimer0A_Handler)
+    clear                                    0x00001ac5   Thumb Code    30  interpreter.o(.text.clear)
+    fillmessage                              0x00001d61   Thumb Code    70  st7735.o(.text.fillmessage)
+    getTime                                  0x00001da9   Thumb Code    22  interpreter.o(.text.getTime)
+    help                                     0x00001dc1   Thumb Code   228  interpreter.o(.text.help)
+    main                                     0x00001eb1   Thumb Code   102  lab1.o(.text.main)
+    msIterator                               0x00001f19   Thumb Code    16  lab1.o(.text.msIterator)
+    printADC                                 0x00001f29   Thumb Code    36  interpreter.o(.text.printADC)
+    writeToLCD                               0x000021b5   Thumb Code    64  interpreter.o(.text.writeToLCD)
+    __aeabi_errno_addr                       0x000021f5   Thumb Code     4  errno.o(i.__aeabi_errno_addr)
+    __rt_errno_addr                          0x000021f5   Thumb Code     0  errno.o(i.__aeabi_errno_addr)
+    __scatterload_copy                       0x000021fd   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0000220b   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x0000220d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    __ctype_table                            0x0000221a   Data         129  ctype_o.o(.constdata)
+    A                                        0x000022a0   Data          16  irdistance.o(.rodata.A)
+    B                                        0x000022b0   Data          16  irdistance.o(.rodata.B)
+    IRmax                                    0x000027bc   Data          16  irdistance.o(.rodata.IRmax)
+    Region$$Table$$Base                      0x000028b0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000028d0   Number         0  anon$$obj.o(Region$$Table)
+    CommandTable                             0x20000008   Data         420  interpreter.o(.data.CommandTable)
+    StTextColor                              0x200001ac   Data           2  st7735.o(.data.StTextColor)
+    ADCdata                                  0x200001b0   Data           4  lab1.o(.bss.ADCdata)
+    Distance                                 0x200001b8   Data           4  lab1.o(.bss.Distance)
+    FilterOutput                             0x200001bc   Data           4  lab1.o(.bss.FilterOutput)
+    FilterWork                               0x200001c0   Data           4  lab1.o(.bss.FilterWork)
+    LCDFree                                  0x200001c4   Data           4  st7735.o(.bss.LCDFree)
+    Message                                  0x200001c8   Data          12  st7735.o(.bss.Message)
+    Messageindex                             0x200001d4   Data           4  st7735.o(.bss.Messageindex)
+    OS_timeMs                                0x200001d8   Data           4  os.o(.bss.OS_timeMs)
+    PeriodicTask0                            0x200001dc   Data           4  timer0a.o(.bss.PeriodicTask0)
+    PeriodicTask4                            0x200001e0   Data           4  timer4a.o(.bss.PeriodicTask4)
+    RxGetI                                   0x200005e8   Data           4  uart0int.o(.bss.RxGetI)
+    RxPutI                                   0x200005ec   Data           4  uart0int.o(.bss.RxPutI)
+    StX                                      0x200005f0   Data           4  st7735.o(.bss.StX)
+    StY                                      0x200005f4   Data           4  st7735.o(.bss.StY)
+    TxGetI                                   0x200009fc   Data           4  uart0int.o(.bss.TxGetI)
+    TxPutI                                   0x20000a00   Data           4  uart0int.o(.bss.TxPutI)
+    WidePeriodicTask0                        0x20000a04   Data           4  wtimer0a.o(.bss.WidePeriodicTask0)
+    u1                                       0x20000a0c   Data           4  lpf.o(.bss.u1)
+    u2                                       0x20000a10   Data           4  lpf.o(.bss.u2)
+    u3                                       0x20000a14   Data           4  lpf.o(.bss.u3)
+    __initial_sp                             0x20000e18   Data           0  startup.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x0000026d
+
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00002a80, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000029b8])
+
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000028d0, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x00000000   0x00000284   Code   RO            3  * RESET               startup.o
+    0x00000284   0x00000284   0x00000000   Code   RO          639  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00000284   0x00000284   0x00000004   Code   RO          660    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x00000288   0x00000288   0x00000004   Code   RO          663    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x0000028c   0x0000028c   0x00000000   Code   RO          665    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x0000028c   0x0000028c   0x00000000   Code   RO          667    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x0000028c   0x0000028c   0x00000008   Code   RO          668    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00000294   0x00000294   0x00000000   Code   RO          670    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00000294   0x00000294   0x00000000   Code   RO          672    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00000294   0x00000294   0x00000004   Code   RO          661    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x00000298   0x00000298   0x0000001c   Code   RO            4    .text               startup.o
+    0x000002b4   0x000002b4   0x0000000c   Code   RO          642    .text               mc_w.l(tolower.o)
+    0x000002c0   0x000002c0   0x00000024   Code   RO          644    .text               mc_w.l(memseta.o)
+    0x000002e4   0x000002e4   0x0000000e   Code   RO          646    .text               mc_w.l(strlen.o)
+    0x000002f2   0x000002f2   0x0000001c   Code   RO          648    .text               mc_w.l(strcmp.o)
+    0x0000030e   0x0000030e   0x00000012   Code   RO          650    .text               mc_w.l(strcpy.o)
+    0x00000320   0x00000320   0x00000044   Code   RO          652    .text               mc_w.l(strtok.o)
+    0x00000364   0x00000364   0x0000001a   Code   RO          658    .text               mc_w.l(atoi.o)
+    0x0000037e   0x0000037e   0x00000070   Code   RO          681    .text               mc_w.l(strtol.o)
+    0x000003ee   0x000003ee   0x00000002   PAD
+    0x000003f0   0x000003f0   0x00000030   Code   RO          683    .text               mc_w.l(init.o)
+    0x00000420   0x00000420   0x00000008   Code   RO          685    .text               mc_w.l(ctype_o.o)
+    0x00000428   0x00000428   0x0000009e   Code   RO          713    .text               mc_w.l(_strtoul.o)
+    0x000004c6   0x000004c6   0x0000001c   Code   RO          715    .text               mc_w.l(_chval.o)
+    0x000004e2   0x000004e2   0x0000003a   Code   RO          725    .text               mc_w.l(__dczerorl.o)
+    0x0000051c   0x0000051c   0x00000020   Code   RO          363    .text.ADC0_InSeq3   adcswtrigger.o
+    0x0000053c   0x0000053c   0x000001f4   Code   RO          361    .text.ADC0_InitSWTriggerSeq3  adcswtrigger.o
+    0x00000730   0x00000730   0x00000004   Code   RO          615    .text.ADC_In        adc.o
+    0x00000734   0x00000734   0x0000000a   Code   RO          613    .text.ADC_Init      adc.o
+    0x0000073e   0x0000073e   0x00000002   PAD
+    0x00000740   0x00000740   0x0000006a   Code   RO          537    .text.CS_Init       edisk.o
+    0x000007aa   0x000007aa   0x00000002   PAD
+    0x000007ac   0x000007ac   0x00000060   Code   RO           15    .text.DAStask       lab1.o
+    0x0000080c   0x0000080c   0x00000002   Code   RO           61    .text.GPIOPortF_Handler  os.o
+    0x0000080e   0x0000080e   0x00000002   PAD
+    0x00000810   0x00000810   0x00000036   Code   RO          494    .text.IRDistance_Convert  irdistance.o
+    0x00000846   0x00000846   0x00000002   PAD
+    0x00000848   0x00000848   0x00000138   Code   RO          136    .text.Interpreter   interpreter.o
+    0x00000980   0x00000980   0x00000046   Code   RO          148    .text.LaunchPad_Init  launchpad.o
+    0x000009c6   0x000009c6   0x00000002   PAD
+    0x000009c8   0x000009c8   0x0000004a   Code   RO          434    .text.Median        lpf.o
+    0x00000a12   0x00000a12   0x00000002   PAD
+    0x00000a14   0x00000a14   0x0000000e   Code   RO           91    .text.OS_ClearMsTime  os.o
+    0x00000a22   0x00000a22   0x00000002   PAD
+    0x00000a24   0x00000a24   0x00000002   Code   RO           43    .text.OS_InitSemaphore  os.o
+    0x00000a26   0x00000a26   0x00000002   PAD
+    0x00000a28   0x00000a28   0x0000000c   Code   RO           93    .text.OS_MsTime     os.o
+    0x00000a34   0x00000a34   0x0000006a   Code   RO          166    .text.PLL_Init      pll.o
+    0x00000a9e   0x00000a9e   0x00000002   PAD
+    0x00000aa0   0x00000aa0   0x000000f0   Code   RO          209    .text.ST7735_DrawCharS  st7735.o
+    0x00000b90   0x00000b90   0x000000d0   Code   RO          195    .text.ST7735_DrawFastHLine  st7735.o
+    0x00000c60   0x00000c60   0x000000be   Code   RO          189    .text.ST7735_DrawPixel  st7735.o
+    0x00000d1e   0x00000d1e   0x00000002   PAD
+    0x00000d20   0x00000d20   0x000000fc   Code   RO          197    .text.ST7735_FillRect  st7735.o
+    0x00000e1c   0x00000e1c   0x00000044   Code   RO          183    .text.ST7735_FillScreen  st7735.o
+    0x00000e60   0x00000e60   0x00000132   Code   RO          185    .text.ST7735_InitR  st7735.o
+    0x00000f92   0x00000f92   0x00000002   PAD
+    0x00000f94   0x00000f94   0x00000084   Code   RO          225    .text.ST7735_Message  st7735.o
+    0x00001018   0x00001018   0x0000008e   Code   RO          231    .text.ST7735_MessageDelay  st7735.o
+    0x000010a6   0x000010a6   0x00000002   PAD
+    0x000010a8   0x000010a8   0x00000092   Code   RO          233    .text.ST7735_MessageNum  st7735.o
+    0x0000113a   0x0000113a   0x00000002   PAD
+    0x0000113c   0x0000113c   0x00000166   Code   RO          227    .text.ST7735_OutChar  st7735.o
+    0x000012a2   0x000012a2   0x00000002   PAD
+    0x000012a4   0x000012a4   0x00000126   Code   RO          221    .text.ST7735_OutUDec  st7735.o
+    0x000013ca   0x000013ca   0x00000002   PAD
+    0x000013cc   0x000013cc   0x00000002   Code   RO           33    .text.SysTick_Handler  os.o
+    0x000013ce   0x000013ce   0x00000002   PAD
+    0x000013d0   0x000013d0   0x00000016   Code   RO          627    .text.Timer0A_Handler  timer0a.o
+    0x000013e6   0x000013e6   0x00000002   PAD
+    0x000013e8   0x000013e8   0x0000007a   Code   RO          625    .text.Timer0A_Init  timer0a.o
+    0x00001462   0x00001462   0x00000002   PAD
+    0x00001464   0x00001464   0x00000018   Code   RO          509    .text.Timer4A_Handler  timer4a.o
+    0x0000147c   0x0000147c   0x00000072   Code   RO          507    .text.Timer4A_Init  timer4a.o
+    0x000014ee   0x000014ee   0x00000002   PAD
+    0x000014f0   0x000014f0   0x00000150   Code   RO          323    .text.UART0_Handler  uart0int.o
+    0x00001640   0x00001640   0x0000019e   Code   RO          341    .text.UART_InString  uart0int.o
+    0x000017de   0x000017de   0x00000002   PAD
+    0x000017e0   0x000017e0   0x000000d0   Code   RO          313    .text.UART_Init     uart0int.o
+    0x000018b0   0x000018b0   0x0000009c   Code   RO          319    .text.UART_OutChar  uart0int.o
+    0x0000194c   0x0000194c   0x000000a8   Code   RO          325    .text.UART_OutString  uart0int.o
+    0x000019f4   0x000019f4   0x000000b8   Code   RO          329    .text.UART_OutUDec  uart0int.o
+    0x00001aac   0x00001aac   0x00000018   Code   RO          524    .text.WideTimer0A_Handler  wtimer0a.o
+    0x00001ac4   0x00001ac4   0x0000001e   Code   RO          130    .text.clear         interpreter.o
+    0x00001ae2   0x00001ae2   0x00000002   PAD
+    0x00001ae4   0x00001ae4   0x000000da   Code   RO          187    .text.commandList   st7735.o
+    0x00001bbe   0x00001bbe   0x00000002   PAD
+    0x00001bc0   0x00001bc0   0x0000019e   Code   RO          179    .text.commonInit    st7735.o
+    0x00001d5e   0x00001d5e   0x00000002   PAD
+    0x00001d60   0x00001d60   0x00000046   Code   RO          215    .text.fillmessage   st7735.o
+    0x00001da6   0x00001da6   0x00000002   PAD
+    0x00001da8   0x00001da8   0x00000016   Code   RO          126    .text.getTime       interpreter.o
+    0x00001dbe   0x00001dbe   0x00000002   PAD
+    0x00001dc0   0x00001dc0   0x000000f0   Code   RO          128    .text.help          interpreter.o
+    0x00001eb0   0x00001eb0   0x00000066   Code   RO           17    .text.main          lab1.o
+    0x00001f16   0x00001f16   0x00000002   PAD
+    0x00001f18   0x00001f18   0x00000010   Code   RO           13    .text.msIterator    lab1.o
+    0x00001f28   0x00001f28   0x00000030   Code   RO          124    .text.printADC      interpreter.o
+    0x00001f58   0x00001f58   0x0000025c   Code   RO          191    .text.setAddrWindow  st7735.o
+    0x000021b4   0x000021b4   0x00000040   Code   RO          122    .text.writeToLCD    interpreter.o
+    0x000021f4   0x000021f4   0x00000008   Code   RO          674    i.__aeabi_errno_addr  mc_w.l(errno.o)
+    0x000021fc   0x000021fc   0x0000000e   Code   RO          719    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0000220a   0x0000220a   0x00000002   Code   RO          720    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0000220c   0x0000220c   0x0000000e   Code   RO          721    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0000221a   0x0000221a   0x00000081   Data   RO          686    .constdata          mc_w.l(ctype_o.o)
+    0x0000229b   0x0000229b   0x00000001   PAD
+    0x0000229c   0x0000229c   0x00000004   Data   RO          687    .constdata          mc_w.l(ctype_o.o)
+    0x000022a0   0x000022a0   0x00000010   Data   RO          496    .rodata.A           irdistance.o
+    0x000022b0   0x000022b0   0x00000010   Data   RO          497    .rodata.B           irdistance.o
+    0x000022c0   0x000022c0   0x000004fb   Data   RO          279    .rodata.Font        st7735.o
+    0x000027bb   0x000027bb   0x00000001   PAD
+    0x000027bc   0x000027bc   0x00000010   Data   RO          499    .rodata.IRmax       irdistance.o
+    0x000027cc   0x000027cc   0x0000003b   Data   RO          268    .rodata.Rcmd1       st7735.o
+    0x00002807   0x00002807   0x0000000d   Data   RO          269    .rodata.Rcmd2green  st7735.o
+    0x00002814   0x00002814   0x0000000d   Data   RO          272    .rodata.Rcmd2red    st7735.o
+    0x00002821   0x00002821   0x0000002b   Data   RO          273    .rodata.Rcmd3       st7735.o
+    0x0000284c   0x0000284c   0x0000004b   Data   RO          139    .rodata.str1.1      interpreter.o
+    0x00002897   0x00002897   0x00000016   Data   RO          288    .rodata.str1.1      st7735.o
+    0x000028ad   0x000028ad   0x00000003   PAD
+    0x000028b0   0x000028b0   0x00000020   Data   RO          718    Region$$Table       anon$$obj.o
+
+
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000028d0, Size: 0x000001b0, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000000e8])
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   COMPRESSED   0x00000004   Data   RW          653    .data               mc_w.l(strtok.o)
+    0x20000004   COMPRESSED   0x00000004   Data   RW          677    .data               mc_w.l(errno.o)
+    0x20000008   COMPRESSED   0x000001a4   Data   RW          138    .data.CommandTable  interpreter.o
+    0x200001ac   COMPRESSED   0x00000002   Data   RW          265    .data.StTextColor   st7735.o
+
+
+    Execution Region ER_ZI (Exec base: 0x200001b0, Load base: 0x000029b8, Size: 0x00000c68, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x200001b0        -       0x00000004   Zero   RW           19    .bss.ADCdata        lab1.o
+    0x200001b4        -       0x00000001   Zero   RW          270    .bss.ColStart       st7735.o
+    0x200001b5   0x000029b8   0x00000003   PAD
+    0x200001b8        -       0x00000004   Zero   RW           21    .bss.Distance       lab1.o
+    0x200001bc        -       0x00000004   Zero   RW           20    .bss.FilterOutput   lab1.o
+    0x200001c0        -       0x00000004   Zero   RW           22    .bss.FilterWork     lab1.o
+    0x200001c4        -       0x00000004   Zero   RW          267    .bss.LCDFree        st7735.o
+    0x200001c8        -       0x0000000c   Zero   RW          280    .bss.Message        st7735.o
+    0x200001d4        -       0x00000004   Zero   RW          281    .bss.Messageindex   st7735.o
+    0x200001d8        -       0x00000004   Zero   RW          111    .bss.OS_timeMs      os.o
+    0x200001dc        -       0x00000004   Zero   RW          631    .bss.PeriodicTask0  timer0a.o
+    0x200001e0        -       0x00000004   Zero   RW          513    .bss.PeriodicTask4  timer4a.o
+    0x200001e4        -       0x00000001   Zero   RW          271    .bss.RowStart       st7735.o
+    0x200001e5        -       0x00000400   Zero   RW          345    .bss.RxFifo         uart0int.o
+    0x200005e5   0x000029b8   0x00000003   PAD
+    0x200005e8        -       0x00000004   Zero   RW          343    .bss.RxGetI         uart0int.o
+    0x200005ec        -       0x00000004   Zero   RW          344    .bss.RxPutI         uart0int.o
+    0x200005f0        -       0x00000004   Zero   RW          263    .bss.StX            st7735.o
+    0x200005f4        -       0x00000004   Zero   RW          264    .bss.StY            st7735.o
+    0x200005f8        -       0x00000001   Zero   RW          274    .bss.TabColor       st7735.o
+    0x200005f9        -       0x00000400   Zero   RW          348    .bss.TxFifo         uart0int.o
+    0x200009f9   0x000029b8   0x00000003   PAD
+    0x200009fc        -       0x00000004   Zero   RW          346    .bss.TxGetI         uart0int.o
+    0x20000a00        -       0x00000004   Zero   RW          347    .bss.TxPutI         uart0int.o
+    0x20000a04        -       0x00000004   Zero   RW          528    .bss.WidePeriodicTask0  wtimer0a.o
+    0x20000a08        -       0x00000001   Zero   RW          276    .bss._height        st7735.o
+    0x20000a09   0x000029b8   0x00000001   PAD
+    0x20000a0a        -       0x00000001   Zero   RW          275    .bss._width         st7735.o
+    0x20000a0b   0x000029b8   0x00000001   PAD
+    0x20000a0c        -       0x00000004   Zero   RW          482    .bss.u1             lpf.o
+    0x20000a10        -       0x00000004   Zero   RW          480    .bss.u2             lpf.o
+    0x20000a14        -       0x00000004   Zero   RW          481    .bss.u3             lpf.o
+    0x20000a18        -       0x00000400   Zero   RW            1    STACK               startup.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+        14          0          0          0          0        879   adc.o
+       532         60          0          0          0       3181   adcswtrigger.o
+       106          0          0          0          0      11908   edisk.o
+       716         60         75        420          0       3994   interpreter.o
+        54          0         48          0          0        918   irdistance.o
+       214          0          0          0         16       1134   lab1.o
+        70          0          0          0          0       1757   launchpad.o
+        74          0          0          0         12       9865   lpf.o
+        32          0          0          0          4       5763   os.o
+       106          0          0          0          0        650   pll.o
+      3642          0       1425          2         33      26875   st7735.o
+       672        622          0          0       1024       1076   startup.o
+       144          0          0          0          4       1101   timer0a.o
+       138          0          0          0          4       1099   timer4a.o
+      1466          0          0          0       2064      11985   uart0int.o
+        24          0          0          0          4       1117   wtimer0a.o
+
+    ----------------------------------------------------------------------
+      8056        742       1584        424       3176      83302   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+        52          0          4          2         11          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+        58          0          0          0          0          0   __dczerorl.o
+        28          0          0          0          0         68   _chval.o
+       158          0          0          0          0         92   _strtoul.o
+        26          0          0          0          0         80   atoi.o
+         8          4        133          0          0         68   ctype_o.o
+         0          0          0          0          0          0   entry.o
+         0          0          0          0          0          0   entry10a.o
+         0          0          0          0          0          0   entry11a.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         0          0          0          0          0          0   entry7b.o
+         0          0          0          0          0          0   entry8b.o
+         8          4          0          0          0          0   entry9a.o
+         8          4          0          4          0         68   errno.o
+        30          0          0          0          0          0   handlers.o
+        48         10          0          0          0         68   init.o
+        36          0          0          0          0        108   memseta.o
+        28          0          0          0          0         76   strcmp.o
+        18          0          0          0          0         68   strcpy.o
+        14          0          0          0          0         68   strlen.o
+        68          6          0          4          0         80   strtok.o
+       112          0          0          0          0         88   strtol.o
+        12          0          0          0          0         68   tolower.o
+
+    ----------------------------------------------------------------------
+       674         32        134          8          0       1000   Library Totals
+         2          0          1          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+       672         32        133          8          0       1000   mc_w.l
+
+    ----------------------------------------------------------------------
+       674         32        134          8          0       1000   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+      8730        774       1718        432       3176      83890   Grand Totals
+      8730        774       1718        232       3176      83890   ELF Image Totals (compressed)
+      8730        774       1718        232          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                10448 (  10.20kB)
+    Total RW  Size (RW Data + ZI Data)              3608 (   3.52kB)
+    Total ROM Size (Code + RO Data + RW Data)      10680 (  10.43kB)
+
+==============================================================================
+
